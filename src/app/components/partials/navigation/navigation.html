@@ -1,0 +1,742 @@
+<div class="nav-heading">
+  <h3>Navigation</h3>
+</div>
+
+<div slimscroll="{
+      height: '100%',
+      size: '4px',
+      borderRadius: '0px',
+      opacity: .2
+     }">
+
+  <ul class="nav nav-sidebar">
+    <li ng-class="{'active':$state.includes('dashboard')}">
+      <a ui-sref="dashboard">
+        <span class="nav-text">{{ 'Menu.DASHBOARD' | translate }}</span>
+        <i class="fa fa-home"></i>
+      </a>
+    </li>
+    <li ng-class="{'open active':$state.includes('mail')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.MAIL' | translate }}</span>
+        <i class="fa fa-envelope-o"><span class="badge bg-red">4</span></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="mail.inbox">
+            <span class="nav-text">{{ 'Menu.INBOX' | translate }}</span>
+            <i>{{ 'Menu.INBOX' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="mail.compose">
+            <span class="nav-text">{{ 'Menu.COMPOSE_MAIL' | translate }}</span>
+            <i>{{ 'Menu.COMPOSE_MAIL' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="mail.single">
+            <span class="nav-text">{{ 'Menu.SINGLE_MAIL' | translate }}</span>
+            <i>{{ 'Menu.SINGLE_MAIL' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{'open active':$state.includes('forms')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.FORM_STUFF' | translate }}</span>
+        <i class="fa fa-list"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="forms.common">
+            <span class="nav-text">{{ 'Menu.COMMON_ELEMENTS' | translate }}</span>
+            <i>{{ 'Menu.COMMON_ELEMENTS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="forms.validation">
+            <span class="nav-text">{{ 'Menu.VALIDATION_ELEMENTS' | translate }}</span>
+            <i>{{ 'Menu.VALIDATION_ELEMENTS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="forms.wizard">
+            <span class="nav-text">{{ 'Menu.FORM_WIZARD' | translate }}</span>
+            <i>{{ 'Menu.FORM_WIZARD' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="forms.upload">
+            <span class="nav-text">{{ 'Menu.FILE_UPLOAD' | translate }}</span>
+            <i>{{ 'Menu.FILE_UPLOAD' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="forms.imagecrop">
+            <span class="nav-text">{{ 'Menu.IMAGE_CROP' | translate }}</span>
+            <i>{{ 'Menu.IMAGE_CROP' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{'open active':$state.includes('ui')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.UI_KIT' | translate }}</span>
+        <i class="fa fa-pencil"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.elements">
+            <span class="nav-text">{{ 'Menu.GENERAL_ELEMENTS' | translate }}</span>
+            <i>{{ 'Menu.GENERAL_ELEMENTS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.buttons">
+            <span class="nav-text">{{ 'Menu.BUTTONS_ICONS' | translate }}</span>
+            <i>{{ 'Menu.BUTTONS_ICONS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.typography">
+            <span class="nav-text">{{ 'Menu.TYPOGRAPHY' | translate }}</span>
+            <i>{{ 'Menu.TYPOGRAPHY' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.navs">
+            <span class="nav-text">{{ 'Menu.NAVIGATION_ACCORDIONS' | translate }}</span>
+            <i>{{ 'Menu.NAVIGATION_ACCORDIONS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.modals">
+            <span class="nav-text">{{ 'Menu.MODALS' | translate }}</span>
+            <i>{{ 'Menu.MODALS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.tiles">
+            <span class="nav-text">{{ 'Menu.TILES' | translate }}</span>
+            <i>{{ 'Menu.TILES' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.portlets">
+            <span class="nav-text">{{ 'Menu.PORTLETS' | translate }}</span>
+            <i>{{ 'Menu.PORTLETS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.grid">
+            <span class="nav-text">{{ 'Menu.GRID' | translate }}</span>
+            <i>{{ 'Menu.GRID' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.widgets">
+            <span class="nav-text">{{ 'Menu.WIDGETS' | translate }}</span>
+            <i>{{ 'Menu.WIDGETS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.tree">
+            <span class="nav-text">{{ 'Menu.TREE' | translate }}</span>
+            <i>{{ 'Menu.TREE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.lists">
+            <span class="nav-text">{{ 'Menu.LISTS' | translate }}</span>
+            <i>{{ 'Menu.LISTS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.alerts">
+            <span class="nav-text">{{ 'Menu.ALERTS_NOTIFICATIONS' | translate }}</span>
+            <i>{{ 'Menu.ALERTS_NOTIFICATIONS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.masonry">
+            <span class="nav-text">{{ 'Menu.MASONRY' | translate }}</span>
+            <i>{{ 'Menu.MASONRY' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="ui.dragula">
+            <span class="nav-text">{{ 'Menu.DRAGULA' | translate }}</span>
+            <i>{{ 'Menu.DRAGULA' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!--<li ng-class="{'open active':$state.includes('material')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.MATERIAL_UI' | translate }}</span>
+        <i class="fa fa-puzzle-piece"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="material.autocomplete">
+            <span class="nav-text">Autocomplete</span>
+            <i>{{ 'Autocomplete' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.bottom-sheet">
+            <span class="nav-text">Bottom Sheet</span>
+            <i>{{ 'Bottom Sheet' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.buttons">
+            <span class="nav-text">Buttons</span>
+            <i>{{ 'Buttons' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.cards">
+            <span class="nav-text">Cards</span>
+            <i>{{ 'Cards' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.checkbox">
+            <span class="nav-text">Checkbox</span>
+            <i>{{ 'Checkbox' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.chips">
+            <span class="nav-text">Chips</span>
+            <i>Cp</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.content">
+            <span class="nav-text">Content</span>
+            <i>{{ 'Content' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.dialog">
+            <span class="nav-text">Dialog</span>
+            <i>{{ 'Dialog' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.divider">
+            <span class="nav-text">Divider</span>
+            <i>Dv</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.fab-speed-dial">
+            <span class="nav-text">FAB Speed Dial</span>
+            <i>FD</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.fab-toolbar">
+            <span class="nav-text">FAB Toolbar</span>
+            <i>FT</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.grid-list">
+            <span class="nav-text">Grid List</span>
+            <i>{{ 'Grid List' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.inputs">
+            <span class="nav-text">Inputs</span>
+            <i>{{ 'Inputs' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.list">
+            <span class="nav-text">List</span>
+            <i>{{ 'List' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.menu">
+            <span class="nav-text">Menu</span>
+            <i>{{ 'Menu' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.progress-circular">
+            <span class="nav-text">Progress Circular</span>
+            <i>PC</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.progress-linear">
+            <span class="nav-text">Progress Linear</span>
+            <i>PL</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.radio-button">
+            <span class="nav-text">Radio Button</span>
+            <i>{{ 'Radio Button' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.select">
+            <span class="nav-text">Select</span>
+            <i>{{ 'Select' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.sidenav">
+            <span class="nav-text">Sidenav</span>
+            <i>{{ 'Sidenav' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.slider">
+            <span class="nav-text">Slider</span>
+            <i>{{ 'Slider' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.subheader">
+            <span class="nav-text">Subheader</span>
+            <i>{{ 'Subheader' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.swipe">
+            <span class="nav-text">Swipe</span>
+            <i>{{ 'Swipe' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.switch">
+            <span class="nav-text">Switch</span>
+            <i>St</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.tabs">
+            <span class="nav-text">Tabs</span>
+            <i>{{ 'Tabs' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.toast">
+            <span class="nav-text">Toast</span>
+            <i>{{ 'Toast' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.toolbar">
+            <span class="nav-text">Toolbar</span>
+            <i>Tl</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.tooltip">
+            <span class="nav-text">Tooltip</span>
+            <i>Tp</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="material.whiteframe">
+            <span class="nav-text">Whiteframe</span>
+            <i>{{ 'Whiteframe' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>-->
+    <li ng-class="{'open active':$state.includes('shop')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.SHOP' | translate }}</span>
+        <i class="fa fa-shopping-cart"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="shop.orders">
+            <span class="nav-text">{{ 'Menu.ORDERS' | translate }}</span>
+            <i>{{ 'Menu.ORDERS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="shop.single-order">
+            <span class="nav-text">{{ 'Menu.SINGLE_ORDER' | translate }}</span>
+            <i>{{ 'Menu.SINGLE_ORDER' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="shop.products">
+            <span class="nav-text">{{ 'Menu.PRODUCTS' | translate }}</span>
+            <i>{{ 'Menu.PRODUCTS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="shop.single-product">
+            <span class="nav-text">{{ 'Menu.SINGLE_PRODUCT' | translate }}</span>
+            <i>{{ 'Menu.SINGLE_PRODUCT' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="shop.invoices">
+            <span class="nav-text">{{ 'Menu.INVOICES' | translate }}</span>
+            <i>{{ 'Menu.INVOICES' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="shop.single-invoice">
+            <span class="nav-text">{{ 'Menu.SINGLE_INVOICE' | translate }}</span>
+            <i>{{ 'Menu.SINGLE_INVOICE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{'open active':$state.includes('tables')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.TABLES' | translate }}</span>
+        <i class="fa fa-table"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="tables.bootstrap">
+            <span class="nav-text">{{ 'Menu.BOOTSTRAP_TABLES' | translate }}</span>
+            <i>{{ 'Menu.BOOTSTRAP_TABLES' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="tables.datatables">
+            <span class="nav-text">{{ 'Menu.DATATABLES' | translate }}</span>
+            <i>{{ 'Menu.DATATABLES' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="tables.ui-grid">
+            <span class="nav-text">{{ 'Menu.UI_GRID' | translate }}</span>
+            <i>{{ 'Menu.UI_GRID' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="tables.ngtable">
+            <span class="nav-text">{{ 'Menu.NGTABLE' | translate }}</span>
+            <i>{{ 'Menu.NGTABLE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="tables.smart-table">
+            <span class="nav-text">{{ 'Menu.SMARTTABLE' | translate }}</span>
+            <i>{{ 'Menu.SMARTTABLE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="tables.footable">
+            <span class="nav-text">{{ 'Menu.FOOTABLE' | translate }}</span>
+            <i>{{ 'Menu.FOOTABLE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{'open active':$state.includes('pages')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.EXTRA_PAGES' | translate }}</span>
+        <i class="fa fa-desktop"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.login">
+            <span class="nav-text">{{ 'Menu.LOGIN_PAGE' | translate }}</span>
+            <i>{{ 'Menu.LOGIN_PAGE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.signup">
+            <span class="nav-text">{{ 'Menu.SIGNUP_PAGE' | translate }}</span>
+            <i>{{ 'Menu.SIGNUP_PAGE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.forgotpass">
+            <span class="nav-text">{{ 'Menu.FORGOT_PASSWORD_PAGE' | translate }}</span>
+            <i>{{ 'Menu.FORGOT_PASSWORD_PAGE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.page404">
+            <span class="nav-text">{{ 'Menu.PAGE_404' | translate }}</span>
+            <i>P4</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.page500">
+            <span class="nav-text">{{ 'Menu.PAGE_500' | translate }}</span>
+            <i>P5</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.offline">
+            <span class="nav-text">{{ 'Menu.PAGE_OFFLINE' | translate }}</span>
+            <i>PO</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.locked">
+            <span class="nav-text">{{ 'Menu.LOCKED_SCREEN' | translate }}</span>
+            <i>{{ 'Menu.LOCKED_SCREEN' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.gallery">
+            <span class="nav-text">{{ 'Menu.GALLERY' | translate }}</span>
+            <i>{{ 'Menu.GALLERY' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.timeline">
+            <span class="nav-text">{{ 'Menu.TIMELINE' | translate }}</span>
+            <i>{{ 'Menu.TIMELINE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.chat">
+            <span class="nav-text">{{ 'Menu.CHAT' | translate }}</span>
+            <i>{{ 'Menu.CHAT' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.search-results">
+            <span class="nav-text">{{ 'Menu.SEARCH_RESULTS' | translate }}</span>
+            <i>{{ 'Menu.SEARCH_RESULTS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.profile">
+            <span class="nav-text">{{ 'Menu.PROFILE_PAGE' | translate }}</span>
+            <i>{{ 'Menu.PROFILE_PAGE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="pages.intro">
+            <span class="nav-text">{{ 'Menu.INTRO' | translate }}</span>
+            <i>{{ 'Menu.INTRO' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{'open active':$state.includes('layouts')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.LAYOUTS' | translate }}</span>
+        <i class="fa fa-delicious"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="layouts.boxed">
+            <span class="nav-text">{{ 'Menu.BOXED_LAYOUT' | translate }}</span>
+            <i>{{ 'Menu.BOXED_LAYOUT' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="layouts.base">
+            <span class="nav-text">{{ 'Menu.BASE_LAYOUT' | translate }}</span>
+            <i>{{ 'Menu.BASE_LAYOUT' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="layouts.non-fixed-header">
+            <span class="nav-text">{{ 'Menu.NON_FIXED_HEADER' | translate }}</span>
+            <i>{{ 'Menu.NON_FIXED_HEADER' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="layouts.non-fixed-sidebar">
+            <span class="nav-text">{{ 'Menu.NON_FIXED_SIDEBAR' | translate }}</span>
+            <i>NS</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="layouts.hz-menu">
+            <span class="nav-text">{{ 'Menu.HORIZONTAL_MENU' | translate }}</span>
+            <i>{{ 'Menu.HORIZONTAL_MENU' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="layouts.rtl">
+            <span class="nav-text">{{ 'Menu.RTL_LAYOUT' | translate }}</span>
+            <i>{{ 'Menu.RTL_LAYOUT' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!--<li>
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.FRONT_THEMES' | translate }}</span>
+        <i class="fa fa-file-o"></i>
+      </a>
+      <ul>
+        <li>
+          <a href="http://www.tattek.sk/minovate-corp" target="_blank">
+            <span class="nav-text">{{ 'Menu.CORPORATE' | translate }}</span>
+            <i>{{ 'Menu.CORPORATE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.tattek.sk/minovate-commerce" target="_blank">
+            <span class="nav-text">{{ 'Menu.COMMERCE' | translate }}</span>
+            <i>{{ 'Menu.COMMERCE' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>-->
+    <li ng-class="{'open active':$state.includes('maps')}">
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.MAPS' | translate }}</span>
+        <i class="fa fa-map-marker"></i>
+      </a>
+      <ul>
+        <li ui-sref-active="active">
+          <a ui-sref="maps.vector">
+            <span class="nav-text">{{ 'Menu.VECTOR_MAPS' | translate }}</span>
+            <i>{{ 'Menu.VECTOR_MAPS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="maps.google">
+            <span class="nav-text">{{ 'Menu.GOOGLE_MAPS' | translate }}</span>
+            <i>{{ 'Menu.GOOGLE_MAPS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="maps.leaflet">
+            <span class="nav-text">{{ 'Menu.LEAFLET_MAPS' | translate }}</span>
+            <i>{{ 'Menu.LEAFLET_MAPS' | translate | limitTo: 2}}</i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li ng-class="{'active':$state.includes('calendar')}">
+      <a ui-sref="calendar">
+        <span class="nav-text">{{ 'Menu.CALENDAR' | translate }}</span>
+        <i class="fa fa-calendar-o"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('charts')}">
+      <a ui-sref="charts">
+        <span class="nav-text">{{ 'Menu.CHARTS_GRAPHS' | translate }}</span>
+        <i class="fa fa-bar-chart-o"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('documentation')}">
+      <a ui-sref="documentation">
+        <span class="nav-text">{{ 'Menu.DOCUMENTATION' | translate }}</span>
+        <i class="fa fa-book"></i>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;">
+        <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+        <i class="fa fa-magic"></i>
+      </a>
+      <ul>
+        <li>
+          <a href="javascript:;">
+            <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+            <i>11</i>
+          </a>
+          <ul>
+            <li>
+              <a href="javascript:;">
+                <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                <i>21</i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                <i>22</i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                <i>23</i>
+              </a>
+              <ul>
+                <li>
+                  <a href="javascript:;">
+                    <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                    <i>31</i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                    <i>32</i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+            <i>12</i>
+          </a>
+          <ul>
+            <li>
+              <a href="javascript:;">
+                <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                <i>21</i>
+              </a>
+              <ul>
+                <li>
+                  <a href="javascript:;">
+                    <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                    <i>31</i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                    <i>32</i>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                        <i>41</i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                        <i>42</i>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                    <i>33</i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <span class="nav-text">{{ 'Menu.MENU_LEVELS' | translate }}</span>
+                <i>22</i>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

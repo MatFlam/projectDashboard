@@ -1,0 +1,28 @@
+<div class="page page-tables pull-to-header">
+
+
+
+    <ol class="breadcrumb bg-white">
+        <li><a ui-sref="dashboard">Home</a></li>
+        <li><a href="javascript:;">Tables</a></li>
+        <li class="active">Datatables</li>
+    </ol>
+
+
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <section class="tile-header">
+                    <h1 class="heading">Projets</h1>
+                </section>
+                <section class="tile-body" ng-controller="BasicDatatableController as showcase">
+                    <table datatable="" dt-options="showcase.dtOptions" dt-columns="showcase.dtColumns" class="table minotaur-table" width="100%"></table>
+                </section>
+                <div class="tile" ng-controller="SplashModalsController as splash">>
+                    <button class="btn btn-warning mb-10" ng-click="splash.openSplash($event)" data-options="splash-2 splash-ef-5">Newspaper</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

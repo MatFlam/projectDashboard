@@ -1,0 +1,163 @@
+<!-- tile -->
+<div class="tile">
+    <h2>Ajout d'un nouveau projet</h2>
+    <section class="tile-body">
+
+        <form name="projectForm" class="form-validation" role="form" ng-submit="modal.submitForm()"
+              novalidate validate-on-submit>
+            <div class="form-group">
+                <!--<label for="projectCode" class="minotaur-label">Code Offre</label>-->
+                <input ng-model="modal.form.projectCode" type="text" class="form-control rounded"
+                       placeholder="Code Projet">
+            </div>
+            <div class="form-group">
+                <!--<label for="client" class="minotaur-label">Client</label>-->
+                <input ng-model="modal.form.client" type="text" class="form-control rounded" id="client"
+                       placeholder="Client">
+            </div>
+            <div class="form-group">
+                <!--<label for="projectName" class="minotaur-label">Nom Projet</label>-->
+                <input ng-model="modal.form.projectName" type="text" class="form-control rounded"
+                       id="projectName" placeholder="Nom du projet">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-15">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <input ng-model="modal.form.aV" type="number" class="form-control rounded" id="aV"
+                                   placeholder="Av-vente">
+                        </div>
+                        <div class="col-xs-3">
+                            <input ng-model="modal.form.crea" type="number" class="form-control rounded" id="crea"
+                                   placeholder="Créa">
+                        </div>
+                        <div class="col-xs-3">
+                            <input ng-model="modal.form.tech" type="number" class="form-control rounded" id="tech"
+                                   placeholder="Tech">
+                        </div>
+                        <div class="col-xs-3">
+                            <input ng-model="modal.form.redac" type="number" class="form-control rounded"
+                                   id="redac" placeholder="Rédac">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!--<label for="other" class="minotaur-label">Autre</label>-->
+                <input ng-model="modal.form.other" type="text" class="form-control rounded" id="other"
+                       placeholder="Autre">
+            </div>
+            <div class="form-group">
+                <!--<label for="projectManagement" class="minotaur-label">Gestion de projet</label>-->
+                <input ng-model="modal.form.projectManagement" type="text"
+                       class="form-control rounded" id="projectManagement" placeholder="Gestion de projet">
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label minotaur-label">Date de livraison</label>
+                <!-- controller is located in ui-elements/ui-elements.controller.js -->
+                <div class="col-sm-10" ng-controller="DatepickerPopupController as ctrl">
+                    <div class="input-group w-md">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ctrl.format}}"
+                               ng-model="ctrl.deliveryDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
+                               ng-required="true" close-text="Close"/>
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="ctrl.open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+<br/><br/><br/>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select ng-model="modal.form.projectManager" type="text"
+                            class="form-control"
+                            chosen="{width: '100%'}">
+                        <option value=”” disabled selected>Chef de projet</option>
+                        <option value="JJ">Jean Jacky</option>
+                        <option value="MD">Marcelline Dupont</option>
+                        <option value="FF">Ferdinand Fucker</option>
+                        <option value="VF">Vierginie Fagina</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <br/>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <select ng-model="modal.form.dirCli" type="text"
+                            class="form-control"
+                            chosen="{width: '100%'}">
+                        <option value=”” disabled selected>Directeur clientèle</option>
+                        <option value="MDD">Mehdi Deunantes</option>
+                        <option value="AZE">Marcel Lèfame</option>
+                        <option value="SDF">Simon Disse</option>
+                        <option value="CVB">Martin Tain-Hémilou</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <br/>
+
+            <!--</div>-->
+            <div class="form-group">
+                <!--<label for="subContracting" class="minotaur-label">Sous-traitance</label>-->
+                <input ng-model="modal.form.subContracting" type="text" class="form-control rounded"
+                       id="subContracting" placeholder="Sous-traitance">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label minotaur-label">Date de production</label>
+                <!-- controller is located in ui-elements/ui-elements.controller.js -->
+                <div class="col-sm-10" ng-controller="DatepickerPopupController as ctrl">
+                    <div class="input-group w-md">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ctrl.format}}"
+                               ng-model="ctrl.productionDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
+                               ng-required="true" close-text="Close"/>
+                        <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="ctrl.open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="form-group">
+                <!--<label for="totalAmount" class="minotaur-label">Montant total</label>-->
+                <input ng-model="modal.form.totalAmount" type="text" class="form-control rounded"
+                       id="totalAmount" placeholder="Montant total">
+            </div>
+            <div class="form-group">
+                <!--<label for="chargedAmount" class="minotaur-label">Montant facturé</label>-->
+                <input ng-model="modal.form.chargedAmount" type="text" class="form-control rounded"
+                       id="chargedAmount" placeholder="Montant facturé">
+            </div>
+            <div class="form-group">
+                <!--<label for="commission" class="minotaur-label">Commission</label>-->
+                <input ng-model="modal.form.commission" type="text" class="form-control rounded"
+                       id="commission" placeholder="Commission">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label minotaur-label">Date de facturation</label>
+                <!-- controller is located in ui-elements/ui-elements.controller.js -->
+                <div class="col-sm-10" ng-controller="DatepickerPopupController as ctrl">
+                    <div class="input-group w-md">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{ctrl.format}}"
+                               ng-model="ctrl.billingDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
+                               ng-required="true" close-text="Close"/>
+                        <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="ctrl.open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-footer text-right">
+                <button type="submit" class="btn btn-success minotaur-btn colored" ng-disabled="projectForm.$invalid">
+                    Envoyer la purée
+                </button>
+            </div>
+        </form>
+
+    </section>
+</div>
