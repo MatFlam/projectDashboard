@@ -3,4 +3,27 @@
 
 salut c'est là qu'on suce des culs?
 
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <section class="tile-header">
+                        <div>
+                        <h1 class="heading">Factures</h1>
+                        <image src="/assets/images/money.png"></image>
+                        </div>
+                    </section>
+                    <section class="tile-body" ng-controller="BillDatatableController as showcase">
+                        <table datatable="" dt-options="showcase.dtOptions" dt-columns="showcase.dtColumns" class="table minotaur-table" width="100%"></table>
+                    </section>
+                    <div class="tile" ng-controller="SplashModalsController as splash">
+                        <button class="btn btn-warning mb-10" ng-click="splash.openSplash($event)" data-options="splash-2 splash-ef-5">Ajouter un projet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>

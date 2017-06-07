@@ -1,10 +1,18 @@
 [
   {
+    "dirCli": "georges moustaki",
+    "projectG": "1",
+    "state": "1",
+    "delivery": "78dz46zd",
+    "other": "c'est un projet très très coule",
+    "redac": "1",
+    "tech": "2",
+    "crea": "0.5",
+    "aV": 1,
     "clientName": "John Bi Route",
     "projectName": "saucisse purée",
     "managerProject": "Marc-Laure",
     "codeProject": "78dz46zd",
-    "commProject": "c'est un projet très très coule",
     "info1": "blablabla",
     "info2": "salut salut",
     "info3": "bonjour bonjour"
