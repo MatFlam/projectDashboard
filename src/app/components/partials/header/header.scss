@@ -121,8 +121,9 @@ minotaur-header {
 
         &.notifications {
           padding: 0;
-          min-width: 360px;
+          min-width: 150px;
           background-color: #eee;
+          padding-top: 10px;
 
           &.with-arrow {
             &:after {

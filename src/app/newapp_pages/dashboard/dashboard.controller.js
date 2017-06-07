@@ -85,7 +85,6 @@
             .withOption('rowCallback', rowCallback)
             .withOption('responsive', true)
             .withButtons([
-                'columnsToggle',
                 'colvis',
                 'copy',
                 'print',
@@ -374,6 +373,7 @@
             return '';
         }
     }
+
 
 })();
 

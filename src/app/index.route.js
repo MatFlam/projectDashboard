@@ -21,6 +21,23 @@
             controllerAs: 'dashboard'
         })
 
+    //planning
+        .state('planning', {
+            url: '/app/planning',
+            templateUrl: 'app/newapp_pages/planning/planning.html',
+            controller: 'PlanningController',
+            controllerAs: 'planning'
+        })
+
+
+    //facture
+        .state('bills', {
+            url: '/app/bills',
+            templateUrl: 'app/newapp_pages/bills/bills.html',
+            controller: 'BillsController',
+            controllerAs: 'bills'
+        })
+
 
 
       // theme to be removed

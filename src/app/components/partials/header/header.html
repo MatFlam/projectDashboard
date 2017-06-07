@@ -10,7 +10,8 @@
     <span class="sr-only">Toggle navigation</span>
     <i class="fa fa-bars"></i>
   </button>
-</div>
+
+
 <div class="main-search hidden-xs">
   <form>
     <input type="text" class="form-control" placeholder="Search...">
@@ -20,3 +21,57 @@
   </form>
 </div>
 
+</div>
+
+<div id="header-navbar" class="navbar-collapse collapse">
+
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+    <li class="btn-group btn-group-rounded-20">
+      <button ui-sref="dashboard2" type="button" class="btn btn-default">Left</button>
+      <button ui-sref="planning" type="button" class="btn btn-default">Middle</button>
+      <button ui-sref="bills" type="button" class="btn btn-default">Right</button>
+    </li>
+
+    <li>
+      <uib-tabset class="minotaur-tab minotaur-tab-theme mb-10" type="pills">
+
+        <uib-tab ui-sref="dashboard2" heading="Projets"></uib-tab>
+        <uib-tab ui-sref="planning" heading="Planning"></uib-tab>
+        <uib-tab ui-sref="bills" heading="Factures"></uib-tab>
+
+      </uib-tabset>
+    </li>
+
+
+    <!-- Single button -->
+    <li>
+    <div uib-dropdown>
+      <button id="profile" type="button" class="btn no-bg" uib-dropdown-toggle>
+        <img src="assets/images/ici-avatar.jpg" class="img-responsive img-circle hidden-xs" alt="">
+        <span class="nav-text"><i class="fa fa-user"></i> Ing. Imrich Kamarel</span>
+      </button>
+      <div class="dropdown-menu with-arrow animated littleFadeInRight profile" uib-dropdown-menu role="menu" aria-labelledby="profile">
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object img-circle" src="assets/images/ici-avatar.jpg" alt="">
+          </div>
+          <div class="media-body">
+            <h4 class="text-sm uppercase-bold">Ing. Imrich Kamarel</h4>
+            <a href="javascript:;">ici.kamarel@minotaur.com</a>
+            <ul class="list-unstyled">
+              <li><a href="javascript:;"><i class="fa fa-user"></i> Edit Profile</a></li>
+              <li><a href="javascript:;"><i class="fa fa-check"></i> Tasks</a></li>
+              <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer">
+          <button class="btn btn-theme minotaur-btn pull-right"><i class="fa fa-power-off"></i> Logout</button>
+          <button class="btn btn-theme minotaur-btn"><i class="fa fa-lock"></i> Lock</button>
+        </div>
+      </div>
+    </div>
+    </li>
+  </ul>
+</div>
