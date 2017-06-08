@@ -58,14 +58,14 @@
                 'colvis',
                 'copy',
                 'print',
-                'excel',
-                {
-                    text: 'Some button',
-                    key: '1',
-                    action: function (e, dt, node, config) {
-                        alert('Button activated');
-                    }
-                }
+                'excel'
+                // {
+                //     text: 'Some button',
+                //     key: '1',
+                //     action: function (e, dt, node, config) {
+                //         alert('Button activated');
+                //     }
+                // }
             ]);
 
         vm.dtColumns = [
