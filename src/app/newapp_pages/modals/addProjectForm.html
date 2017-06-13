@@ -60,15 +60,15 @@
                 <div class="col-sm-10" ng-controller="DatepickerPopupController as ctrl">
                     <div class="input-group w-md">
                         <input type="text" class="form-control" uib-datepicker-popup="{{ctrl.format}}"
-                               ng-model="ctrl.deliveryDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
+                               ng-model="modal.form.deliveryDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
                                ng-required="true" close-text="Close"/>
-                            <span class="input-group-btn">
+                        <span class="input-group-btn">
                               <button type="button" class="btn btn-default" ng-click="ctrl.open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                             </span>
                     </div>
                 </div>
             </div>
-<br/><br/><br/>
+            <br/><br/><br/>
 
             <div class="form-group">
                 <div class="col-sm-10">
@@ -76,10 +76,10 @@
                             class="form-control"
                             chosen="{width: '100%'}">
                         <option value=”” disabled selected>Chef de projet</option>
-                        <option value="JJ">Jean Jacky</option>
-                        <option value="MD">Marcelline Dupont</option>
-                        <option value="FF">Ferdinand Fucker</option>
-                        <option value="VF">Vierginie Fagina</option>
+                        <option value="Jean Jacky">Jean Jacky</option>
+                        <option value="Marcelline Dupont">Marcelline Dupont</option>
+                        <option value="Ferdinand Fucker">Ferdinand Fucker</option>
+                        <option value="Vierginie Fagina">Vierginie Fagina</option>
                     </select>
                 </div>
             </div>
@@ -92,10 +92,10 @@
                             class="form-control"
                             chosen="{width: '100%'}">
                         <option value=”” disabled selected>Directeur clientèle</option>
-                        <option value="MDD">Mehdi Deunantes</option>
-                        <option value="AZE">Marcel Lèfame</option>
-                        <option value="SDF">Simon Disse</option>
-                        <option value="CVB">Martin Tain-Hémilou</option>
+                        <option value="Mehdi Deunantes">Mehdi Deunantes</option>
+                        <option value="Marcel Lèfame">Marcel Lèfame</option>
+                        <option value="Simon Disse">Simon Disse</option>
+                        <option value="Martin Tain-Hémilou">Martin Tain-Hémilou</option>
                     </select>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                 <div class="col-sm-10" ng-controller="DatepickerPopupController as ctrl">
                     <div class="input-group w-md">
                         <input type="text" class="form-control" uib-datepicker-popup="{{ctrl.format}}"
-                               ng-model="ctrl.productionDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
+                               ng-model="modal.form.productionDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
                                ng-required="true" close-text="Close"/>
                         <span class="input-group-btn">
                               <button type="button" class="btn btn-default" ng-click="ctrl.open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -144,7 +144,7 @@
                 <div class="col-sm-10" ng-controller="DatepickerPopupController as ctrl">
                     <div class="input-group w-md">
                         <input type="text" class="form-control" uib-datepicker-popup="{{ctrl.format}}"
-                               ng-model="ctrl.billingDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
+                               ng-model="modal.form.billingDate" is-open="ctrl.popup1.opened" datepicker-options="ctrl.dateOptions"
                                ng-required="true" close-text="Close"/>
                         <span class="input-group-btn">
                               <button type="button" class="btn btn-default" ng-click="ctrl.open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>

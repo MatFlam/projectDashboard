@@ -1,0 +1,21 @@
+[debug] [2017-06-09T12:18:26.769Z] ----------------------------------------------------------------------
+[debug] [2017-06-09T12:18:26.772Z] Command:      /usr/bin/nodejs /usr/local/bin/firebase init
+[debug] [2017-06-09T12:18:26.772Z] CLI Version:  3.9.1
+[debug] [2017-06-09T12:18:26.772Z] Platform:     linux
+[debug] [2017-06-09T12:18:26.772Z] Node Version: v4.2.6
+[debug] [2017-06-09T12:18:26.772Z] Time:         Fri Jun 09 2017 14:18:26 GMT+0200 (CEST)
+[debug] [2017-06-09T12:18:26.772Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-09T12:18:26.778Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2017-06-09T12:18:26.778Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/matflam/Desktop/Projects/themePlan
+

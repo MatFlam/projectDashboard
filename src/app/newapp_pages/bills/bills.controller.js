@@ -70,7 +70,7 @@
 
         vm.dtColumns = [
             DTColumnBuilder.newColumn('dirCli').withTitle('Directeur clientèle'),
-            DTColumnBuilder.newColumn('clientName').withTitle('Client'),
+            DTColumnBuilder.newColumn('client').withTitle('Client'),
             DTColumnBuilder.newColumn('subContracting').withTitle('Sous-traitance'),
             DTColumnBuilder.newColumn('projectCode').withTitle('Code offre'),
             DTColumnBuilder.newColumn('productionDate').withTitle('Date prod'),

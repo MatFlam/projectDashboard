@@ -6,7 +6,7 @@
         .controller('DashboardController', DashboardController)
         .controller('TablesDatatablesController', TablesDatatablesController)
         .controller('BasicDatatableController', BasicDatatableController)
-        .controller('ChangeDatatableController', ChangeDatatableController)
+        .controller('ChangeDatatableController', ChangeDatatableController);
 
 
 

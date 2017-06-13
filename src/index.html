@@ -46,6 +46,21 @@
 
     </div>
 
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDfrp1Q82ZIeEI5wSmsrdwIiTXo9zW3pyU",
+            authDomain: "projets-plannings.firebaseapp.com",
+            databaseURL: "https://projets-plannings.firebaseio.com",
+            projectId: "projets-plannings",
+            storageBucket: "projets-plannings.appspot.com",
+            messagingSenderId: "520332471904"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
 
     <!-- build:js(src) scripts/vendor.js -->
