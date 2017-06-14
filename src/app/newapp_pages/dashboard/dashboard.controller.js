@@ -45,14 +45,41 @@
         vm.message = '';
 
 
-        var getData = function(){
+        var getData = function () {
             var defer = $q.defer();
-            $http.get('app/json/projects.json')
-                .then(function (response) {
-                    $scope.projects = response.data;
-                    $scope.obj = JSON.parse(localStorage.getItem('myStorage'));
-                    defer.resolve(response.data);
-                });
+
+            var ref = firebase.database().ref('/projects/');
+
+            ref.on('value', function(snap) {
+                // snap.val() comes back as an object with keys
+                // these keys need to be come "private" properties
+                var data = snap.val();
+                var dataWithKeys = Object.keys(data).map(function(key) {
+                        var obj = data[key];
+                obj._key = key;
+                return obj;
+            });
+
+                console.log('dataWithKeys', dataWithKeys)
+
+                defer.resolve(dataWithKeys);
+            });
+
+            /*firebase.database().ref('/projects/')
+             .then(function (snapshot) {
+             /*snapshot.forEach(function (childSnapshot) {
+
+             var key = childSnapshot.key;
+
+             var childData = childSnapshot.val();
+             console.log(key);
+             console.log(childData);
+             vm.projects = childData;
+             defer.resolve(vm.projects);
+             });
+             console.log('snapshot', snapshot)
+             defer.resolve(snapshot);
+             });*/
             return defer.promise;
         };
 
@@ -96,17 +123,17 @@
             ]);
 
         vm.dtColumns = [
-            DTColumnBuilder.newColumn('codeProject').withTitle('Code'),
-            DTColumnBuilder.newColumn('clientName').withTitle('Client'),
+            DTColumnBuilder.newColumn('projectCode').withTitle('Code'),
+            DTColumnBuilder.newColumn('client').withTitle('Client'),
             DTColumnBuilder.newColumn('projectName').withTitle('Nom Projet'),
             DTColumnBuilder.newColumn('aV').withTitle('AV'),
             DTColumnBuilder.newColumn('crea').withTitle('Créa'),
             DTColumnBuilder.newColumn('tech').withTitle('Tech'),
             DTColumnBuilder.newColumn('redac').withTitle('Rédac'),
             DTColumnBuilder.newColumn('other').withTitle('Autre'),
-            DTColumnBuilder.newColumn('projectG').withTitle('Gestion de projet'),
-            DTColumnBuilder.newColumn('delivery').withTitle('Date livraison'),
-            DTColumnBuilder.newColumn('managerProject').withTitle('Chef de projet'),
+            DTColumnBuilder.newColumn('projectManagement').withTitle('Gestion de projet'),
+            DTColumnBuilder.newColumn('deliveryDate').withTitle('Date livraison'),
+            DTColumnBuilder.newColumn('projectManager').withTitle('projectManager'),
             DTColumnBuilder.newColumn('state').withTitle('Etat'),
             DTColumnBuilder.newColumn('aV2').withTitle('AV'),
             DTColumnBuilder.newColumn('crea2').withTitle('Créa'),

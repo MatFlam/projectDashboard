@@ -18,14 +18,41 @@
         vm.message = '';
 
 
-        var getData = function(){
+        var getData = function () {
             var defer = $q.defer();
-            $http.get('app/json/projects.json')
-                .then(function (response) {
-                    $scope.projects = response.data;
-                    $scope.obj = JSON.parse(localStorage.getItem('myStorage'));
-                    defer.resolve(response.data);
-                });
+
+            var ref = firebase.database().ref('/projects/');
+
+            ref.on('value', function(snap) {
+                // snap.val() comes back as an object with keys
+                // these keys need to be come "private" properties
+                var data = snap.val();
+                var dataWithKeys = Object.keys(data).map(function(key) {
+                        var obj = data[key];
+                obj._key = key;
+                return obj;
+            });
+
+                console.log('dataWithKeys', dataWithKeys)
+
+                defer.resolve(dataWithKeys);
+            });
+
+            /*firebase.database().ref('/projects/')
+             .then(function (snapshot) {
+             /*snapshot.forEach(function (childSnapshot) {
+
+             var key = childSnapshot.key;
+
+             var childData = childSnapshot.val();
+             console.log(key);
+             console.log(childData);
+             vm.projects = childData;
+             defer.resolve(vm.projects);
+             });
+             console.log('snapshot', snapshot)
+             defer.resolve(snapshot);
+             });*/
             return defer.promise;
         };
 
@@ -73,7 +100,7 @@
             DTColumnBuilder.newColumn('client').withTitle('Client'),
             DTColumnBuilder.newColumn('subContracting').withTitle('Sous-traitance'),
             DTColumnBuilder.newColumn('projectCode').withTitle('Code offre'),
-            DTColumnBuilder.newColumn('productionDate').withTitle('Date prod'),
+            DTColumnBuilder.newColumn('productionDate').withTitle('Date prod').renderWith('date', 'd'),
             DTColumnBuilder.newColumn('totalAmount').withTitle('Montant total'),
             DTColumnBuilder.newColumn('chargedAmount').withTitle('Montant facturé'),
             DTColumnBuilder.newColumn('commission').withTitle('Commission'),
