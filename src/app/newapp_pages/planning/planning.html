@@ -1,9 +1,15 @@
 <div class="page page-tables pull-to-header">
 
-bibadeloula
+  <weekly-scheduler class="scheduler"
+                    items="model.items"
+                    on-change="demo.doSomething"
+                    on-delete="demo.doSomething"
+                    options="model.options">
+    <div class="srow">{{::$index + 1}}. {{item.label}}</div>
+  </weekly-scheduler>
 
-cheese my baybay
-
-    <image src="/assets/images/whatplan.jpg"></image>
+  <div class="pull-right">
+    <button class="btn btn-success" role="button" ng-click="model.items.push({label: 'New Item'})">Add new item</button>
+  </div>
 
 </div>

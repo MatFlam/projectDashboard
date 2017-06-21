@@ -60,7 +60,7 @@
                 return obj;
             });
 
-                console.log('dataWithKeys', dataWithKeys)
+                console.log('dataWithKeys', dataWithKeys);
 
                 defer.resolve(dataWithKeys);
             });
