@@ -54,8 +54,5 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "dependencies": {
-    "angular-weekly-scheduler": "file:///home/matflam/Desktop/Projects/planningNoeupApp/angular-weekly-scheduler"
   }
 }
