@@ -1,93 +1,91 @@
 <!doctype html>
 <html ng-app="minotaur" ng-class="specialClass">
-  <head>
-    <meta charset="utf-8">
-    <title>Actance - Admin Dashboard</title>
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"/>-->
-    <!--&lt;!&ndash;[if lt IE 9]>-->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css"/>-->
-    <!--<![endif]&ndash;&gt;-->
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/noeup-app/angular-weekly-scheduler/dev/app/ng-weekly-scheduler.css">
+<head>
+  <meta charset="utf-8">
+  <title>Actance - Admin Dashboard</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Chrome, Firefox OS, Opera and Vivaldi -->
+  <meta name="theme-color" content="#FF00FF">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#1199d3">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#1199d3">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Chrome, Firefox OS, Opera and Vivaldi -->
-    <meta name="theme-color" content="#FF00FF">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#1199d3">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#1199d3">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="../bower_components/angular-weekly-scheduler/dist/ng-weekly-scheduler.css" />
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
 
-    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- build:css({.tmp/serve,src}) styles/app.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
 
-    <!-- build:css({.tmp/serve,src}) styles/app.css -->
-    <!-- inject:css -->
-    <!-- css files will be automatically insert here -->
-    <!-- endinject -->
-    <!-- endbuild -->
-  </head>
-  <body id="minotaur" class="appWrap {{main.headerStyle}} {{main.primaryColor}} {{main.navigationStyle}}" ng-class="specialClass" ng-controller="MainController as main">
-    <!--[if lt IE 10]>
+<body id="minotaur" class="appWrap {{main.headerStyle}} {{main.primaryColor}} {{main.navigationStyle}}" ng-class="specialClass"
+  ng-controller="MainController as main">
+  <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div id="wrap">
+  <div id="wrap">
 
-      <minotaur-header ng-class="specialClass" ng-if="specialClass !== 'core'"></minotaur-header>
+    <minotaur-header ng-class="specialClass" ng-if="specialClass !== 'core'"></minotaur-header>
 
-      <minotaur-nav ng-class="hz-menu" ng-if="specialClass !== 'core'"></minotaur-nav>
+    <minotaur-nav ng-class="hz-menu" ng-if="specialClass !== 'core'"></minotaur-nav>
 
-      <minotaur-rightbar ng-if="specialClass !== 'core'"></minotaur-rightbar>
+    <minotaur-rightbar ng-if="specialClass !== 'core'"></minotaur-rightbar>
 
-      <section id="content" ui-view></section>
+    <section id="content" ui-view></section>
 
-      <minotaur-loading></minotaur-loading>
+    <minotaur-loading></minotaur-loading>
 
-      <minotaur-customize></minotaur-customize>
+    <minotaur-customize></minotaur-customize>
 
-    </div>
+  </div>
 
 
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyDfrp1Q82ZIeEI5wSmsrdwIiTXo9zW3pyU",
-            authDomain: "projets-plannings.firebaseapp.com",
-            databaseURL: "https://projets-plannings.firebaseio.com",
-            projectId: "projets-plannings",
-            storageBucket: "projets-plannings.appspot.com",
-            messagingSenderId: "520332471904"
-        };
-        firebase.initializeApp(config);
-    </script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDfrp1Q82ZIeEI5wSmsrdwIiTXo9zW3pyU",
+      authDomain: "projets-plannings.firebaseapp.com",
+      databaseURL: "https://projets-plannings.firebaseio.com",
+      projectId: "projets-plannings",
+      storageBucket: "projets-plannings.appspot.com",
+      messagingSenderId: "520332471904"
+    };
+    firebase.initializeApp(config);
+  </script>
 
-    <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+  <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
 
   <!-- build:js(src) scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- run `gulp inject` to automatically populate bower script dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- bower:js -->
+  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <script src="../bower_components/angular-weekly-scheduler/dist/js/ng-weekly-scheduler.js"></script>
 
-    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
-    <!-- inject:js -->
-    <!-- js files will be automatically insert here -->
-    <!-- endinject -->
+  <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+  <!-- inject:js -->
+  <!-- js files will be automatically insert here -->
+  <!-- endinject -->
 
-    <!-- inject:partials -->
-    <!-- angular templates will be automatically converted in js and inserted here -->
-    <!-- endinject -->
-    <!-- endbuild -->
+  <!-- inject:partials -->
+  <!-- angular templates will be automatically converted in js and inserted here -->
+  <!-- endinject -->
+  <!-- endbuild -->
 
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sons-of-obsidian"></script>
 
-  </body>
+</body>
+
 </html>
