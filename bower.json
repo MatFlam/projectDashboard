@@ -228,6 +228,7 @@
     "ng-table": "1.0.0",
     "footable": "~2.0.0",
     "leaflet": "0.7.x",
-    "morris.js": "e-tag:c200fe477"
+    "morris.js": "e-tag:c200fe477",
+    "moment": "~2.13.0"
   }
 }
