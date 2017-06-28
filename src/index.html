@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#1199d3">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  <link rel="stylesheet" href="../bower_components/angular-weekly-scheduler/dist/ng-weekly-scheduler.css" />
+  <link rel="stylesheet" href="../bower_components/angular-weekly-scheduler/app/ng-weekly-scheduler.css" />
   <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
   <!-- bower:css -->
   <!-- run `gulp inject` to automatically populate bower styles dependencies -->
@@ -51,19 +51,7 @@
   </div>
 
 
-  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyDfrp1Q82ZIeEI5wSmsrdwIiTXo9zW3pyU",
-      authDomain: "projets-plannings.firebaseapp.com",
-      databaseURL: "https://projets-plannings.firebaseio.com",
-      projectId: "projets-plannings",
-      storageBucket: "projets-plannings.appspot.com",
-      messagingSenderId: "520332471904"
-    };
-    firebase.initializeApp(config);
-  </script>
+ 
 
   <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
 
@@ -85,6 +73,19 @@
   <!-- endbuild -->
 
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+
+   <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDfrp1Q82ZIeEI5wSmsrdwIiTXo9zW3pyU",
+      authDomain: "projets-plannings.firebaseapp.com",
+      databaseURL: "https://projets-plannings.firebaseio.com",
+      projectId: "projets-plannings",
+      storageBucket: "projets-plannings.appspot.com",
+      messagingSenderId: "520332471904"
+    };
+    firebase.initializeApp(config);
+  </script>
 
 </body>
 

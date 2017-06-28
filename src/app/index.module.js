@@ -59,7 +59,8 @@
       'angular-flot',
       'ngAnimate',
       'weeklyScheduler',
-      'weeklySchedulerI18N'
+      'weeklySchedulerI18N',
+      'firebase'
     ]);
 
 })();

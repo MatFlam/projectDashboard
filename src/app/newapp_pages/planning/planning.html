@@ -1,12 +1,18 @@
 <div class="page page-tables pull-to-header">
 
+   <div>
+      <code>$scope.model</code>
+      <pre ng-bind="planning.model | json" style="max-height: 200px;"></pre>
+</div>
+
   <weekly-scheduler class="scheduler"
-                    on-add-slot="vm.openSplash"
-                    items="model.items"
-                    on-change="demo.doSomething"
-                    on-delete="demo.doSomething"
-                    options="model.options">
-    <div class="srow">{{::$index + 1}}. {{item.label}}</div>
+                    on-slot-added="planning.onSlotAdded"
+                    get-slot-text="planning.getSlotText"
+                    items="planning.model.items"
+                    on-change="planning.doSomething"
+                    on-delete="planning.doSomething"
+                    options="planning.model.options">
+    <div class="srow">{{::$index + 1}}. {{item.name}}</div>
   </weekly-scheduler>
 
   <div class="pull-right">
