@@ -15,6 +15,8 @@
   function PlanningController($scope, $timeout, $log, $firebaseArray, $uibModal) {
     var planning = this;
 
+    planning.lastSlotMeta = false;
+
     planning.model = {
         //locale: localeService.$locale.id,
       options: {/*monoSchedule: true*/},
@@ -78,6 +80,12 @@
 
     planning.onSlotAdded = function(cb) {
 
+
+      if(planning.lastSlotMeta) {
+        cb(planning.lastSlotMeta);
+        return;
+      }
+
       var modalInstance = $uibModal.open({
         templateUrl: 'app/newapp_pages/planning/modals/addSlot/addSlotModal.html',
         controller: 'AddSlotModalsController',
@@ -87,6 +95,7 @@
 
       modalInstance.result.then(function(data) {
         console.log('modal closed')
+        planning.lastSlotMeta = data
         cb(data);
       }, function() {
         $log.info('Modal dismissed at: ' + new Date());
@@ -94,7 +103,7 @@
     }
 
     planning.getSlotText = function(schedule) {
-      return schedule.meta.project + '(' + schedule.meta.client + ')'
+      return schedule.meta.project + ' (' + schedule.meta.client + ')'
     }
 
     planning.onChange = function(itemIndex, scheduleIndex, scheduleValue) {
@@ -105,6 +114,10 @@
               console.log('Saved', planning.model.items[itemIndex])
             });
     };
+
+    planning.shouldMergeTwoSlots = function(slot1, slot2) {
+      return slot1.meta.project === slot2.meta.project && slot1.meta.client === slot2.meta.client
+    }
 
     planning.onLocaleChange = function() {
       $log.debug('The locale is changing to', planning.model.locale);
