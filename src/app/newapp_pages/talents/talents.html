@@ -8,36 +8,61 @@
                     <h1 class="heading">Talents</h1>
                 </section>
                 <section class="tile-body" ng-controller="TalentsBasicDatatableController as showcase">
-                  <table>
-                    <tr>
-                        <th class="b-0">
-                            <div class="form-group">
-                                <label>
-                                    <input autofocus="" class="form-control input-sm" type="file" name="id" ng-model="showCase.person2Add.avatar" value="">
-                                </label>
-                            </div>
-                        </th>
-                        <th class="b-0">
-                            <div class="form-group">
-                                <label>
-                                    <input type="text" class="form-control input-sm" name="firstName" ng-model="showCase.person2Add.firstName" value="">
-                                </label>
-                            </div>
-                        </th>
-                        <th class="b-0">
-                            <div class="form-group">
-                                <label>
-                                    <input type="text" class="form-control input-sm" name="lastName" ng-model="showCase.person2Add.lastName" value="">
-                                </label>
-                            </div>
-                        </th>
-                        <th class="b-0">
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-sm btn-default">Ajouter</button>
-                            </div>
-                        </th>
-                    </tr>
-                  </table>
+                  <div class="form">
+                      <table>
+                          <tr>
+                            <td class="form-group p-10">
+                                <label for="avatar" class="minotaur-label">Avatar</label>
+                                <input id="avatar" autofocus="" class="form-control input-sm" type="file" name="avatar" ng-model="showCase.add.avatar" value="" placeholder="Choose avatar">
+                            </td>
+
+                            <td class="form-group p-10">
+                                <label for="email" class="minotaur-label">Email address</label>
+                                <input id="email" autofocus="" class="form-control input-sm" type="email" name="email" ng-model="showCase.add.email" value="" placeholder="Choose avatar">
+                            </td>
+
+                            <td class="form-group p-10">
+                                <label for="firstName" class="minotaur-label">Prénom</label>
+                                <input id="firstName" type="text" class="form-control input-sm" name="firstName" ng-model="showCase.add.firstname" value="">
+                            </td>
+
+                            <td class="form-group p-10">
+                                <label for="name" class="minotaur-label">Nom</label>
+                                <input id="name" type="text" class="form-control input-sm" name="name" ng-model="showCase.add.name" value="">
+                            </td>
+
+                            <td class="form-group">
+                               <div class="col-sm-10">
+                                   <label for="job" class="minotaur-label">Métier</label>
+                                   <select ng-model="modal.form.job" type="text" id="job"
+                                           class="form-control" chosen="{width: '100%'}">
+                                       <option value=”crea” selected>Créa</option>
+                                       <option value="tech">tech</option>
+                                       <option value="redac">redact</option>
+                                       <option value="gdp">Gestion de projet</option>
+                                       <option value="autre">autre</option>
+                                   </select>
+                               </div>
+                            </td>
+
+                            <td class="form-group">
+                               <div class="col-sm-10">
+                                   <label for="level" class="minotaur-label">Niveau</label>
+                                   <select ng-model="modal.form.level" type="text" id="level"
+                                           class="form-control" chosen="{width: '100%'}">
+                                       <option value=”1” selected>1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
+                                   </select>
+                               </div>
+                            </td>
+
+                            <td class="form-group p-10">
+                                <button type="submit" class="btn btn-sm btn-default btn-info">Ajouter</button>
+                            </td>
+                          </tr>
+                          </table>
+                       </div>
                   <table datatable="" dt-options="showcase.dtOptions" dt-columns="showcase.dtColumns" class="table minotaur-table" width="100%"></table>
                 </section>
                 <div class="tile" ng-controller="SplashModalsController as splash">
