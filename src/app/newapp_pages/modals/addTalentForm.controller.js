@@ -38,6 +38,8 @@
   function ModalInstanceController($uibModalInstance) {
     var vm = this;
 
+    vm.form = {};
+
     vm.submitForm = function () {
       console.log('addform form is in scope', vm.form);
       firebase.database().ref('projects/').push({

@@ -82,7 +82,14 @@
             .withOption('rowCallback', rowCallback)
             .withOption('responsive', true)
             .withButtons([
-                'colvis',
+                {
+                    extend: 'colvis',
+                    //columnText: function ( dt, idx, title ) {
+                    //    return (idx+1)+': '+title;
+                    //},
+                    text: "Selection des colonnes"
+                }
+                ,
                 'copy',
                 'print',
                 'excel'
@@ -96,16 +103,16 @@
             ]);
 
         vm.dtColumns = [
-            DTColumnBuilder.newColumn('dirCli').withTitle('Directeur clientèle'),
-            DTColumnBuilder.newColumn('client').withTitle('Client'),
-            DTColumnBuilder.newColumn('subContracting').withTitle('Sous-traitance'),
-            DTColumnBuilder.newColumn('projectCode').withTitle('Code offre'),
-            DTColumnBuilder.newColumn('productionDate').withTitle('Date prod').renderWith('date', 'd'),
-            DTColumnBuilder.newColumn('totalAmount').withTitle('Montant total'),
-            DTColumnBuilder.newColumn('chargedAmount').withTitle('Montant facturé'),
-            DTColumnBuilder.newColumn('commission').withTitle('Commission'),
-            DTColumnBuilder.newColumn('billingDate').withTitle('Date facturation'),
-            DTColumnBuilder.newColumn('deliveryDate').withTitle('Date livraison')
+            DTColumnBuilder.newColumn('dirCli').withTitle('Directeur clientèle').withOption('defaultContent', '').renderWith(function (data){return "<span>"+data+"</span>"}),
+            DTColumnBuilder.newColumn('client').withTitle('Client').withOption('defaultContent', '').renderWith(function (data){return "<h5>"+data+"</h5>"}),
+            DTColumnBuilder.newColumn('subContracting').withTitle('Sous-traitance').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('projectCode').withTitle('Code offre').withOption('defaultContent', '').renderWith(function (data){return "<h5>"+data+"</h5>"}),
+            DTColumnBuilder.newColumn('productionDate').withTitle('Date prod').withOption('defaultContent', '').renderWith(function (data){return  "<h6>"+moment.unix(data).format("DD MMMM")+"<br/><small>"+moment.unix(data).format("YYYY")+"</small></h6>";}),
+            DTColumnBuilder.newColumn('totalAmount').withTitle('Montant total').withOption('defaultContent', '').renderWith(function (data){return "<h6>"+data+" €</h6>"}),
+            DTColumnBuilder.newColumn('chargedAmount').withTitle('Montant facturé').withOption('defaultContent', '').renderWith(function (data){return "<h6>"+data+" €</h6>"}),
+            DTColumnBuilder.newColumn('commission').withTitle('Commission').withOption('defaultContent', '').renderWith(function (data){return "<h6>"+data+" %</h6>"}),
+            DTColumnBuilder.newColumn('billingDate').withTitle('Date facturation').withOption('defaultContent', '').renderWith(function (data){return  "<h6>"+moment.unix(data).format("DD MMMM")+"<br/><small>"+moment.unix(data).format("YYYY")+"</small></h6>";}),
+            DTColumnBuilder.newColumn('deliveryDate').withTitle('Date livraison').withOption('defaultContent', '').renderWith(function (data){return  "<h6>"+moment.unix(data).format("DD MMMM")+"<br/><small>"+moment.unix(data).format("YYYY")+"</small></h6>";})
         ];
 
         function someClickHandler(info) {

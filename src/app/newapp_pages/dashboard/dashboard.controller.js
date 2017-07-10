@@ -109,7 +109,14 @@
             .withOption('rowCallback', rowCallback)
             .withOption('responsive', true)
             .withButtons([
-                'colvis',
+                //'colvis',
+                {
+                    extend: 'colvis',
+                    //columnText: function ( dt, idx, title ) {
+                    //    return (idx+1)+': '+title;
+                    //},
+                    text: "Selection des colonnes"
+                },
                 'copy',
                 'print',
                 'excel'
@@ -123,26 +130,27 @@
             ]);
 
         vm.dtColumns = [
-            DTColumnBuilder.newColumn('projectCode').withTitle('Code'),
-            DTColumnBuilder.newColumn('client').withTitle('Client'),
-            DTColumnBuilder.newColumn('projectName').withTitle('Nom Projet'),
-            DTColumnBuilder.newColumn('aV').withTitle('AV'),
-            DTColumnBuilder.newColumn('crea').withTitle('Créa'),
-            DTColumnBuilder.newColumn('tech').withTitle('Tech'),
-            DTColumnBuilder.newColumn('redac').withTitle('Rédac'),
-            DTColumnBuilder.newColumn('other').withTitle('Autre'),
-            DTColumnBuilder.newColumn('projectManagement').withTitle('Gestion de projet'),
-            DTColumnBuilder.newColumn('deliveryDate').withTitle('Date livraison'),
-            DTColumnBuilder.newColumn('projectManager').withTitle('projectManager'),
-            DTColumnBuilder.newColumn('state').withTitle('Etat'),
-            DTColumnBuilder.newColumn('aV2').withTitle('AV'),
-            DTColumnBuilder.newColumn('crea2').withTitle('Créa'),
-            DTColumnBuilder.newColumn('tech2').withTitle('Tech'),
-            DTColumnBuilder.newColumn('redac2').withTitle('Rédac'),
-            DTColumnBuilder.newColumn('other2').withTitle('Autre'),
-            DTColumnBuilder.newColumn('info1').withTitle('Commentaire').withClass('none'),
-            DTColumnBuilder.newColumn('info2').withTitle('Info2').withClass('none'),
-            DTColumnBuilder.newColumn('info3').withTitle('Info3').withClass('none')
+            DTColumnBuilder.newColumn('projectCode').withTitle('Code').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('client').withTitle('Client').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('projectName').withTitle('Nom Projet').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('aV').withTitle('AV').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('crea').withTitle('Créa').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('tech').withTitle('Tech').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('redac').withTitle('Rédac').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('other').withTitle('Autre').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('projectManagement').withTitle('Gestion de projet').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('deliveryDate').withTitle('Date livraison').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('projectManager').withTitle('projectManager').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('state').withTitle('Etat').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('actions').withClass('all').withTitle('Actions').withOption('defaultContent', '').renderWith(function (){return  "<button type='button' class='btn btn-info btn-border btn-xs'>Modifier</button> <button type='button' class='btn btn-danger btn-border btn-xs'>Archiver</button>";}),
+            DTColumnBuilder.newColumn('aV2').withTitle('AV').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('crea2').withTitle('Créa').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('tech2').withTitle('Tech').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('redac2').withTitle('Rédac').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('other2').withTitle('Autre').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('info1').withTitle('Commentaire').withClass('none').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('info2').withTitle('Info2').withClass('none').withOption('defaultContent', ''),
+            DTColumnBuilder.newColumn('info3').withTitle('Info3').withClass('none').withOption('defaultContent', '')
         ];
 
         function someClickHandler(info) {
@@ -179,14 +187,14 @@
             vm.persons.splice(index, 1);
         }
 
-        vm.persons = $resource('http://www.filltext.com/?rows=16&id={index}&firstName={firstName}&lastName={lastName}&pretty=true').query();
+        //vm.persons = $resource('http://www.filltext.com/?rows=16&id={index}&firstName={firstName}&lastName={lastName}&pretty=true').query();
         vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withBootstrap();
-        vm.dtColumnDefs = [
-            DTColumnDefBuilder.newColumnDef(0),
-            DTColumnDefBuilder.newColumnDef(1),
-            DTColumnDefBuilder.newColumnDef(2),
-            DTColumnDefBuilder.newColumnDef(3).notSortable()
-        ];
+        //vm.dtColumnDefs = [
+        //    DTColumnDefBuilder.newColumnDef(0),
+        //    DTColumnDefBuilder.newColumnDef(1),
+        //    DTColumnDefBuilder.newColumnDef(2),
+        //    DTColumnDefBuilder.newColumnDef(3).notSortable()
+        //];
         vm.person2Add = _buildPerson2Add(1);
         vm.addPerson = addPerson;
         vm.modifyPerson = modifyPerson;

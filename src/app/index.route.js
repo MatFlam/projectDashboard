@@ -39,6 +39,15 @@
         })
 
 
+    //talents
+        .state('talents', {
+            url: '/app/talents',
+            templateUrl: 'app/newapp_pages/talents/talents.html',
+            controller: 'TalentsController',
+            controllerAs: 'talents'
+        })
+
+
 
       // theme to be removed
 
