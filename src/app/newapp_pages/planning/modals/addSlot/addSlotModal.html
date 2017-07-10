@@ -1,0 +1,28 @@
+<!-- tile -->
+<div class="tile">
+  <h2>Ajout d'un créneau</h2>
+  <section class="tile-body">
+
+    <form name="projectForm" class="form-validation" role="form" ng-submit="modal.submitForm()"
+          novalidate validate-on-submit>
+      <div class="form-group">
+        <!--<label for="projectCode" class="minotaur-label">Code Offre</label>-->
+        <input ng-model="modal.form.project" type="text" class="form-control rounded"
+               placeholder="Code Projet">
+      </div>
+      <div class="form-group">
+        <!--<label for="client" class="minotaur-label">Client</label>-->
+        <input ng-model="modal.form.client" type="text" class="form-control rounded" id="client"
+               placeholder="Client">
+      </div>
+
+      <div class="form-group form-footer text-right">
+        <button type="submit" class="btn btn-cyan btn-ef btn-ef-7 btn-ef-7h mb-10" activate-button="success"
+                ><i class="fa fa-envelope"></i>
+          Submit Form
+        </button>
+      </div>
+    </form>
+
+  </section>
+</div>

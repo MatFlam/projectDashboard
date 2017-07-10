@@ -3,14 +3,23 @@
    <div>
       <code>$scope.model</code>
       <pre ng-bind="planning.model | json" style="max-height: 200px;"></pre>
-</div>
+  </div>
+
+  <div ng-show="planning.lastSlotMeta">
+    Les données du prochain slot sont :
+    <ul>
+      <li><strong>Projet : </strong>{{planning.lastSlotMeta.project}}</li>
+      <li><strong>Client : </strong>{{planning.lastSlotMeta.client}}</li>
+    </ul>
+  </div>
 
   <weekly-scheduler class="scheduler"
                     on-slot-added="planning.onSlotAdded"
                     get-slot-text="planning.getSlotText"
                     items="planning.model.items"
-                    on-change="planning.doSomething"
-                    on-delete="planning.doSomething"
+                    on-change="planning.onChange"
+                    on-delete="planning.onChange"
+                    should-merge-two-slots="planning.shouldMergeTwoSlots"
                     options="planning.model.options">
     <div class="srow">{{::$index + 1}}. {{item.name}}</div>
   </weekly-scheduler>
