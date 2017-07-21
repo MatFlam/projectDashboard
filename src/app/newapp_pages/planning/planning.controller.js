@@ -1,6 +1,6 @@
   angular
       .module('minotaur')
-      .controller('PlanningController', PlanningController)
+      .controller('PlanningController', PlanningController);
 
     // .config(['weeklySchedulerLocaleServiceProvider', function(localeServiceProvider) {
     //   localeServiceProvider.configure({
@@ -28,10 +28,10 @@
         if(planning.model.items[itemIdx].schedules) {
           Object.keys(planning.model.items[itemIdx].schedules).forEach(function(scheduleTypeIdx) {
             planning.model.items[itemIdx].schedules[scheduleTypeIdx].forEach(function(schedule, scheduleIdx) {
-              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].start = schedule.start.toJSON()
-              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].end = schedule.end.toJSON()
+              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].start = schedule.start.toJSON();
+              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].end = schedule.end.toJSON();
             });
-          })
+          });
         }
       });
     }
@@ -41,12 +41,12 @@
         if(planning.model.items[itemIdx].schedules) {
           Object.keys(planning.model.items[itemIdx].schedules).forEach(function(scheduleTypeIdx) {
             planning.model.items[itemIdx].schedules[scheduleTypeIdx].forEach(function(schedule, scheduleIdx) {
-              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].start = new Date(schedule.start)
-              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].end = new Date(schedule.end)
+              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].start = new Date(schedule.start);
+              planning.model.items[itemIdx].schedules[scheduleTypeIdx][scheduleIdx].end = new Date(schedule.end);
             });
-          })
+          });
         }
-      })
+      });
     }
 
     function normalizeSchedule() {
@@ -55,15 +55,15 @@
           planning.model.items[idx].schedules = {
             predicted: [],
             realised: []
-          }
+          };
         }
         if(!item.schedules.predicted) {
-          planning.model.items[idx].schedules.predicted = []
+          planning.model.items[idx].schedules.predicted = [];
         }
         if(!item.schedules.realised) {
-          planning.model.items[idx].schedules.realised = []
+          planning.model.items[idx].schedules.realised = [];
         }
-      })
+      });
       unserializingDate();
     }
 
@@ -75,7 +75,7 @@
 
     planning.model.items.$loaded().then(function() {
       normalizeSchedule();
-    })
+    });
 
 
     planning.onSlotAdded = function(cb) {
@@ -100,11 +100,11 @@
       }, function() {
         $log.info('Modal dismissed at: ' + new Date());
       });
-    }
+    };
 
     planning.getSlotText = function(schedule) {
       return schedule.meta.project + ' (' + schedule.meta.client + ')'
-    }
+    };
 
     planning.onChange = function(itemIndex, scheduleIndex, scheduleValue) {
       serializingDate();
@@ -117,7 +117,7 @@
 
     planning.shouldMergeTwoSlots = function(slot1, slot2) {
       return slot1.meta.project === slot2.meta.project && slot1.meta.client === slot2.meta.client
-    }
+    };
 
     planning.onLocaleChange = function() {
       $log.debug('The locale is changing to', planning.model.locale);

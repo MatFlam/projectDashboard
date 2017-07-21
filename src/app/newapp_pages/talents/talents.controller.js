@@ -4,33 +4,37 @@
     angular
         .module('minotaur')
         .controller('TalentsController', TalentsController)
-        .controller('TalentsTablesDatatablesController', TalentsTablesDatatablesController)
-        .controller('TalentsBasicDatatableController', TalentsBasicDatatableController)
-        .controller('TalentsChangeDatatableController', TalentsChangeDatatableController);
+        .controller('TalentsDatatablesController', TalentsDatatablesController)
+        .controller('TalentsBasicDatatableController', TalentsBasicDatatableController);
 
 
 
     /** @ngInject */
-    function TalentsController() {}
+    function TalentsController() {
+
+    }
 
     /** @ngInject */
-    function TalentsTablesDatatablesController() {}
+    function TalentsDatatablesController() {
+
+    }
 
     function TalentsBasicDatatableController(DTOptionsBuilder, DTColumnBuilder, $resource, $scope, $q, $http, $firebaseArray) {
 
-        var talents = this;
+      var talents = this;
+      talents.lastSlotMeta = false;
 
-        var getData = function () {
-            var defer = $q.defer();
-            var rootRef = firebase.database().ref();
-            var ref = rootRef.child('talents');
+      talents.model = {
+        //locale: localeService.$locale.id,
+        options: {/*monoSchedule: true*/},
+        items: []
+      };
 
-            talents.model.items = $firebaseArray(ref);
-            talents.model.items.$loaded().then(
-                defer.resolve('unable to resolve "talents promise"', talents.model.items)
-            );
-            return defer.promise;
-        };
+      var rootRef = firebase.database().ref();
+      var ref = rootRef.child('users');
+
+      talents.model.items = $firebaseArray(ref);
+      var getData = talents.model.items.$loaded();
 
 
         function rowCallback(nRow, aData) {
@@ -60,9 +64,8 @@
             .withButtons(['colvis', 'copy', 'print', 'excel']);
 
         talents.dtColumns = [
-            DTColumnBuilder.newColumn('avatar').withTitle('Photo'),
-            DTColumnBuilder.newColumn('firstname').withTitle('Prénom'),
-            DTColumnBuilder.newColumn('name').withTitle('Name'),
+            DTColumnBuilder.newColumn('firstName').withTitle('Prénom'),
+            DTColumnBuilder.newColumn('name').withTitle('Nom'),
             DTColumnBuilder.newColumn('job').withTitle('Métier'),
             DTColumnBuilder.newColumn('level').withTitle('Niveau d\'expertise'),
             DTColumnBuilder.newColumn('email').withTitle('Email')
@@ -73,29 +76,6 @@
         }
 
         talents.someClickHandler = someClickHandler;
-
-        talents.submitFormAdd = function () {
-            console.log('addform form is in scope', talents.add);
-            firebase.database().ref('talents/').push({
-                avatar: JSON.stringify(talents.add.avatar),
-                name: JSON.stringify(talents.form.name),
-                firstname: JSON.stringify(talents.form.firstName),
-                job: JSON.stringify(talents.add.job),
-                level: JSON.stringify(talents.add.level)
-            });
-
-            talents.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withBootstrap();
-            //talents.dtColumnDefs = [
-            //    DTColumnDefBuilder.newColumnDef(0),
-            //    DTColumnDefBuilder.newColumnDef(1),
-            //    DTColumnDefBuilder.newColumnDef(2),
-            //    DTColumnDefBuilder.newColumnDef(3).notSortable()
-            //];
-            talents.talent2Add = _buildTalent2Add(1);
-            talents.addTalent = addTalent;
-            talents.modifyTalent = modifyTalent;
-            talents.removeTalent = removeTalent;
-        }
     }
 })();
 

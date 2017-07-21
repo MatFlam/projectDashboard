@@ -3,21 +3,21 @@
 
   angular
     .module('minotaur')
-    .controller('TalentsSplashModalsController', TalentsSplashModalsController)
-    .controller('TalentsModalInstanceController', TalentsModalInstanceController)
+    .controller('SplashModalsController', SplashModalsController)
+    .controller('ModalInstanceController', ModalInstanceController)
     .controller('DatepickerPopupController', DatepickerPopupController);
 
 
   /** @ngInject */
-  function TalentsSplashModalsController($uibModal, $log) {
+  function SplashModalsController($uibModal, $log) {
     var vm = this;
 
     vm.openSplash = function (event, size) {
 
       var options = angular.element(event.target).data('options');
       var modalInstance = $uibModal.open({
-        templateUrl: 'app/newapp_pages/modals/addTalentForm.html',
-        controller: 'TalentsModalInstanceController',
+        templateUrl: 'app/newapp_pages/modals/addProjectForm.html',
+        controller: 'ModalInstanceController',
         controllerAs: 'modal',
         size: size,
         backdropClass: 'splash' + ' ' + options,
@@ -34,19 +34,41 @@
   }
 
   /** @ngInject */
-  function TalentsModalInstanceController($uibModalInstance) {
+  function ModalInstanceController($uibModalInstance) {
     var vm = this;
 
     vm.form = {};
 
     vm.submitForm = function () {
       console.log('addform form is in scope', vm.form);
-      firebase.database().ref('users/').push({
-        email: (vm.form.email),
-        firstName: (vm.form.firstName),
-        name: (vm.form.name),
-        job: (vm.form.job),
-        level: (vm.form.level)
+      firebase.database().ref('projects/').push({
+        projectCode: JSON.stringify(vm.form.projectCode),
+        client: JSON.stringify(vm.form.client),
+        projectName: JSON.stringify(vm.form.projectName),
+        aV: JSON.stringify(vm.form.aV),
+        crea: JSON.stringify(vm.form.crea),
+        tech: JSON.stringify(vm.form.tech),
+        redac: JSON.stringify(vm.form.redac),
+        other: JSON.stringify(vm.form.other),
+        projectManagement: JSON.stringify(vm.form.projectManagement),
+        deliveryDate: JSON.stringify(vm.form.deliveryDate),
+        projectManager: JSON.stringify(vm.form.projectManager),
+        dirCli: JSON.stringify(vm.form.dirCli),
+        subContracting: JSON.stringify(vm.form.subContracting),
+        productionDate: JSON.stringify(vm.form.productionDate),
+        totalAmount: JSON.stringify(vm.form.totalAmount),
+        chargedAmount: JSON.stringify(vm.form.chargedAmount),
+        comment: JSON.stringify(vm.form.comment),
+        firstBillRate: JSON.stringify(vm.form.firstBillRate),
+        firstBillDate: JSON.stringify(vm.form.firstBillDate),
+        secondBillRate: JSON.stringify(vm.form.secondBillRate),
+        secondBillDate: JSON.stringify(vm.form.secondBillDate),
+        thirdBillRate: JSON.stringify(vm.form.thirdBillRate),
+        thirdBillDate: JSON.stringify(vm.form.thirdBillDate),
+        forthBillRate: JSON.stringify(vm.form.forthBillRate),
+        forthBillDate: JSON.stringify(vm.form.forthBillDate),
+        fifthBillRate: JSON.stringify(vm.form.fifthBillRate),
+        fifthBillDate: JSON.stringify(vm.form.fifthBillDate)
       });
       $uibModalInstance.dismiss('submit');
     };

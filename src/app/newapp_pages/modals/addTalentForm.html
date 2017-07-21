@@ -1,92 +1,73 @@
-<!-- tile -->
-<div class="tile">
-  <h2>Ajout d'un nouveau talent</h2>
-  <section class="tile-body">
+<!-- row -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <section class="tile-header">
+        <h1 class="heading">Ajout d'un nouveau Talent</h1>
+      </section>
+      <section class="tile-body">
 
-    <form name="projectForm" class="form-validation form-inline ng-pristine ng-valid" role="form" ng-submit="modal.submitForm()"
-          novalidate validate-on-submit>
-      <div class="form-group">
-        <label for="projectCode" class="minotaur-label">Code Offre</label>
-        <input ng-model="modal.form.projectCode" type="text" class="form-control rounded"
-               placeholder="Code Projet">
-      </div>
+        <form name="talentForm" class="form-validation" role="form" ng-submit="modal.submitForm()"
+              novalidate validate-on-submit>
+      <div class="form">
 
-      <input type='file' name=
-             ng-model=\"vm.addData."+elementDef.modelName+"\""
-             class=\"editable-input form-control input-sm/>
-
-
-      <input onchange="angular.element(this).scope().previewFile(' + id + "',angular.element(this).scope().vm.addData)\" type=\""+elementDef.type+"\" name=\""+elementDef.modelName+"\" ng-model=\"vm.addData."+elementDef.modelName+"\""
-             class=\"editable-input form-control input-sm\" "+that.requiredHtml(elementDef)+"\/>"
-      <br>
-      <img ng-if=\"vm.addData."+elementDef.modelName+"\" ng-src=\"{{vm.addData.logo}}\" height=\"60\">"
-
-
-
-      <div class="form-group">
-        <!--<label for="client" class="minotaur-label">Client</label>-->
-        <input ng-model="modal.form.client" type="text" class="form-control rounded" id="client"
-               placeholder="Client">
-      </div>
-      <div class="form-group">
-        <!--<label for="projectName" class="minotaur-label">Nom Projet</label>-->
-        <input ng-model="modal.form.projectName" type="text" class="form-control rounded"
-               id="projectName" placeholder="Nom du projet">
-      </div>
-      <div class="form-group">
-        <div class="col-sm-15">
-          <div class="row">
-            <div class="col-xs-4">
-              <input ng-model="modal.form.aV" type="number" class="form-control rounded" id="aV"
-                     placeholder="Av-vente">
-            </div>
-            <div class="col-xs-4">
-              <input ng-model="modal.form.crea" type="number" class="form-control rounded" id="crea"
-                     placeholder="Créa">
-            </div>
-            <div class="col-xs-4">
-              <input ng-model="modal.form.tech" type="number" class="form-control rounded" id="tech"
-                     placeholder="Tech">
-            </div>
-            <div class="col-xs-4">
-              <input ng-model="modal.form.redac" type="number" class="form-control rounded"
-                     id="redac" placeholder="Rédac">
-            </div>
-            <div class="col-xs-4">
-              <input ng-model="modal.form.other" type="number" class="form-control rounded" id="other"
-                     placeholder="Autre">
-            </div>
-            <div class="col-xs-4">
-              <input ng-model="modal.form.projectManagement" type="number"
-                     class="form-control rounded" id="projectManagement" placeholder="Gestion de projet">
-            </div>
-
+        <div class="form-group">
+          <div class="col-sm-10">
+            <label for="job" class="minotaur-label">Métier</label>
+            <select ng-model="modal.form.job" type="text" id="job"
+                    class="form-control" chosen="{width: '100%'}">
+              <option value="crea">Créa</option>
+              <option value="tech">Tech</option>
+              <option value="redac">Rédac</option>
+              <option value="projectManagement">Gestion de projet</option>
+              <option value="other">Autre</option>
+            </select>
           </div>
         </div>
-      </div>
+        <div class="form-group">
+          <div class="col-sm-10">
+            <label for="level" class="minotaur-label">Niveau</label>
+            <select ng-model="modal.form.level" type="text" id="level"
+                    class="form-control" chosen="{width: '100%'}">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
+        <br/><br/>
 
-      <div class="form-group">
-        <div class="col-sm-10">
-          <select ng-model="modal.form.dirCli" type="text" text="edededed"
-                  class="form-control"
-                  chosen="{width: '100%'}">
-            <option value=”” disabled selected>Directeur clientèle</option>
-            <option value="Mehdi Deunantes">Mehdi Deunantes</option>
-            <option value="Marcel Lèfame">Marcel Lèfame</option>
-            <option value="Simon Disse">Simon Disse</option>
-            <option value="Martin Tain-Hémilou">Martin Tain-Hémilou</option>
-          </select>
+
+        <div class="form-group">
+          <label for="email" class="minotaur-label">Email address</label>
+          <input id="email" autofocus="" class="form-control input-sm" type="email" name="email"
+                 ng-model="modal.form.email" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="firstName" class="minotaur-label">Prénom</label>
+          <input id="firstName" type="text" class="form-control input-sm" name="firstName"
+                 ng-model="modal.form.firstName" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="name" class="minotaur-label">Nom</label>
+          <input id="name" type="text" class="form-control input-sm" name="name" ng-model="modal.form.name"
+                 value="">
+        </div>
+
+        <div class="form-group form-footer text-right">
+          <button type="submit" class="btn btn-cyan btn-ef btn-ef-7 btn-ef-7h mb-10" activate-button="success"
+          ><i class="fa fa-envelope"></i>
+            Submit Form
+          </button>
         </div>
       </div>
-      <br/>
-
-      <div class="form-group form-footer text-right">
-        <button type="submit" class="btn btn-cyan btn-ef btn-ef-7 btn-ef-7h mb-10" activate-button="success"
-                ><i class="fa fa-envelope"></i>
-          Submit Form
-        </button>
-      </div>
-    </form>
-
-  </section>
+        </form>
+      </section>
+    </div>
+  </div>
 </div>
+</div>
+
+

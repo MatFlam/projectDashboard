@@ -13,7 +13,7 @@ app.directive("contenteditable", function() {
             };
 
             element.bind("blur keyup change", function() {
-                console.log("salut")
+                console.log("salut");
                 scope.$apply(read);
             });
         }
