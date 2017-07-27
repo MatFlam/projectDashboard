@@ -87,7 +87,7 @@
     "angular-dynamic-locale": "^0.1.32",
     "angular-i18n": "~1.4.0",
     "angularfire": "^2.3.0",
-    "angular-weekly-scheduler": "git@github.com:noeup-app/angular-weekly-scheduler.git#dev"
+    "angular-weekly-scheduler": "https://github.com/noeup-app/angular-weekly-scheduler/archive/0.0.6.tar.gz"
   },
   "devDependencies": {
     "angular-mocks": "~1.6.1"
