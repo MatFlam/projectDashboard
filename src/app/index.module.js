@@ -60,7 +60,8 @@
       'ngAnimate',
       'weeklyScheduler',
       'weeklySchedulerI18N',
-      'firebase'
+      'firebase',
+      'ngLodash'
     ]);
 
 })();

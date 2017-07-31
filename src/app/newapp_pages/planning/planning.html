@@ -1,8 +1,8 @@
-<div class="page page-tables pull-to-header">
+<div class="page page-tables pull-to-header" ng-controller="PlanningController as planning">
 
    <div>
       <code>$scope.model</code>
-      <pre ng-bind="planning.model | json" style="max-height: 200px;"></pre>
+      <pre ng-bind="planning.model | json" style="max-height: 500px;"></pre>
   </div>
 
   <div ng-show="planning.lastSlotMeta">
@@ -16,16 +16,16 @@
   <weekly-scheduler class="scheduler"
                     on-slot-added="planning.onSlotAdded"
                     get-slot-text="planning.getSlotText"
-                    items="planning.model.items"
+                    items="planning.localModel.items"
                     on-change="planning.onChange"
                     on-delete="planning.onChange"
                     should-merge-two-slots="planning.shouldMergeTwoSlots"
-                    options="planning.model.options">
+                    options="planning.localModel.options">
     <div class="srow">{{::$index + 1}}. {{item.name}}</div>
   </weekly-scheduler>
 
   <div class="pull-right">
+    <button class="btn btn-success" ng-click="planning.saveLocalItems()">Save changes</button>
     <button class="btn btn-success" role="button" ng-click="model.items.push({label: 'New Item'})">Add new item</button>
   </div>
-
 </div>
