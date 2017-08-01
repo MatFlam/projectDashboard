@@ -5,8 +5,8 @@
     .module('minotaur')
     .controller('DashboardController', DashboardController)
     .controller('TablesDatatablesController', TablesDatatablesController)
-    .controller('BasicDatatableController', BasicDatatableController)
-    .controller('ChangeDatatableController', ChangeDatatableController);
+    .controller('BasicDatatableController', BasicDatatableController);
+    // .controller('ChangeDatatableController', ChangeDatatableController);
 
 
   /** @ngInject */
@@ -51,42 +51,34 @@
       items: []
     };
 
+    // var manager = new Firebase("https://projets-plannings.firebaseio.com/user")
+    //   .startAt('crea')
+    //   .endAt('crea')
+    //   .once('value', function(snap) {
+    //     console.log('accounts matching email address', snap.val());
+    //   });
+
     var rootRef = firebase.database().ref();
     var ref = rootRef.child('projects');
 
-    projects.model.items = $firebaseArray(ref);
+    projects.model.items = $firebaseArray(ref.orderByChild('archived').equalTo(0));
     var getData = projects.model.items.$loaded();
 
     var vm = this;
     vm.message = '';
 
-
-    // var getData = function () {
-    //     var defer = $q.defer();
-    //
-    //     var ref = firebase.database().ref('/projects/');
-    //
-    //     ref.on('value', function(snap) {
-    //         // snap.val() comes back as an object with keys
-    //         // these keys need to be come "private" properties
-    //         var data = snap.val();
-    //         var dataWithKeys = Object.keys(data).map(function(key) {
-    //                 var obj = data[key];
-    //         obj._key = key;
-    //         return obj;
-    //     });
-    //
-    //         console.log('dataWithKeys', dataWithKeys);
-    //         defer.resolve(dataWithKeys);
-    //     });
-    //     return defer.promise;
-    // };
-
-    function archive(row) {
-
+     vm.archive = function(row) {
       firebase.database().ref('projects/' + row.$id).update({"archived" : 1});
+       getData = projects.model.items.$loaded();
 alert('c\'est archivé batard');
-    }
+    };
+
+    vm.deleteProject = function(row) {
+      firebase.database().ref('projects/' + row.$id).remove();
+      getData = projects.model.items.$loaded();
+
+      alert('c\'est supprimé bel homme');
+    };
 
     function rowCallback(nRow, aData) {
       // Unbind first in order to avoid any duplicate handler (see https://github.com/l-lin/angular-datatables/issues/87)
@@ -168,7 +160,9 @@ alert('c\'est archivé batard');
       DTColumnBuilder.newColumn('projectManager').withTitle('projectManager').withOption('defaultContent', ''),
       DTColumnBuilder.newColumn('state').withTitle('Etat').withOption('defaultContent', ''),
       DTColumnBuilder.newColumn('actions').withClass('all').withTitle('Actions').renderWith(function () {
-        return "<div ng-controller='SplashModalsController as splash'><button ng-click=\"splash.openSplash($event, 'lg', row)\" type='button' class='btn btn-info btn-border btn-xs'>Modifier</button></div><div ng-controller='BasicDatatableController as arc'><button type='button' ng-click=\"arc.archive(row)\" class='btn btn-danger btn-border btn-xs'>Archiver</button></div>";
+        return "<div ng-controller='SplashModalsController as splash'><button ng-click=\"splash.openSplash($event, 'lg', row)\" type='button' class='btn btn-info btn-border btn-xs'>Modifier</button></div>" +
+               "<div ng-controller='BasicDatatableController as arc'><button ng-click=\"arc.archive(row)\" type='button' class='btn btn-danger btn-border btn-xs'>Archiver</button></div>" +
+               "<div ng-controller='BasicDatatableController as arc'><button ng-click=\"arc.deleteProject(row)\" type='button' class='btn btn-danger btn-border btn-xs'>Supprimer</button></div>";
       }),
       DTColumnBuilder.newColumn('aV2').withTitle('AV').withOption('defaultContent', ''),
       DTColumnBuilder.newColumn('crea2').withTitle('Créa').withOption('defaultContent', ''),
@@ -188,46 +182,46 @@ alert('c\'est archivé batard');
 
   }
 
-  function ChangeDatatableController($resource, DTOptionsBuilder, DTColumnDefBuilder) {
-
-    var vm = this;
-
-    function _buildPerson2Add(id) {
-      return {
-        id: id,
-        firstName: 'Foo' + id,
-        lastName: 'Bar' + id
-      };
-    }
-
-    function addPerson() {
-      vm.persons.push(angular.copy(vm.person2Add));
-      vm.person2Add = _buildPerson2Add(vm.person2Add.id + 1);
-    }
-
-    function modifyPerson(index) {
-      vm.persons.splice(index, 1, angular.copy(vm.person2Add));
-      vm.person2Add = _buildPerson2Add(vm.person2Add.id + 1);
-    }
-
-    function removePerson(index) {
-      vm.persons.splice(index, 1);
-    }
-
-    //vm.persons = $resource('http://www.filltext.com/?rows=16&id={index}&firstName={firstName}&lastName={lastName}&pretty=true').query();
-    vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withBootstrap();
-    //vm.dtColumnDefs = [
-    //    DTColumnDefBuilder.newColumnDef(0),
-    //    DTColumnDefBuilder.newColumnDef(1),
-    //    DTColumnDefBuilder.newColumnDef(2),
-    //    DTColumnDefBuilder.newColumnDef(3).notSortable()
-    //];
-    vm.person2Add = _buildPerson2Add(1);
-    vm.addPerson = addPerson;
-    vm.modifyPerson = modifyPerson;
-    vm.removePerson = removePerson;
-
-  }
+  // function ChangeDatatableController($resource, DTOptionsBuilder, DTColumnDefBuilder) {
+  //
+  //   var vm = this;
+  //
+  //   function _buildPerson2Add(id) {
+  //     return {
+  //       id: id,
+  //       firstName: 'Foo' + id,
+  //       lastName: 'Bar' + id
+  //     };
+  //   }
+  //
+  //   function addPerson() {
+  //     vm.persons.push(angular.copy(vm.person2Add));
+  //     vm.person2Add = _buildPerson2Add(vm.person2Add.id + 1);
+  //   }
+  //
+  //   function modifyPerson(index) {
+  //     vm.persons.splice(index, 1, angular.copy(vm.person2Add));
+  //     vm.person2Add = _buildPerson2Add(vm.person2Add.id + 1);
+  //   }
+  //
+  //   function removePerson(index) {
+  //     vm.persons.splice(index, 1);
+  //   }
+  //
+  //   //vm.persons = $resource('http://www.filltext.com/?rows=16&id={index}&firstName={firstName}&lastName={lastName}&pretty=true').query();
+  //   vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withBootstrap();
+  //   //vm.dtColumnDefs = [
+  //   //    DTColumnDefBuilder.newColumnDef(0),
+  //   //    DTColumnDefBuilder.newColumnDef(1),
+  //   //    DTColumnDefBuilder.newColumnDef(2),
+  //   //    DTColumnDefBuilder.newColumnDef(3).notSortable()
+  //   //];
+  //   vm.person2Add = _buildPerson2Add(1);
+  //   vm.addPerson = addPerson;
+  //   vm.modifyPerson = modifyPerson;
+  //   vm.removePerson = removePerson;
+  //
+  // }
 
 
 })();

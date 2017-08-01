@@ -98,7 +98,7 @@
                     class="form-control"
                     chosen="{width: '100%'}">
               <option value=”” disabled selected>Chef de projet</option>
-              <option ng-repeat="user in modal.model.items" value="{{user.name+user.firstName}}">{{user.firstName+" "+user.name}}</option>
+              <option ng-repeat="user in modal.projectManager.items" value="{{user.name+user.firstName}}">{{user.firstName+" "+user.name}}</option>
             </select>
           </div>
         </div>
@@ -108,7 +108,7 @@
                   class="form-control"
                   chosen="{width: '100%'}">
             <option value=”” disabled selected>Directeur clientèle</option>
-            <option ng-repeat="user in modal.model.items" value="{{user.name}}">{{user.firstName+" "+user.name}}</option>
+            <option ng-repeat="user in modal.dirCli.items" value="{{user.name}}">{{user.firstName+" "+user.name}}</option>
           </select>
         </div>
       </div>

@@ -39,6 +39,9 @@
 
     vm.form = {};
 
+    var rootRef = firebase.database().ref();
+    var ref = rootRef.child('users');
+
     vm.submitForm = function () {
       console.log('addform form is in scope', vm.form);
       firebase.database().ref('users/').push({
@@ -48,6 +51,11 @@
         job: (vm.form.job),
         level: (vm.form.level)
       });
+
+      ref.on('child_added', function() {
+        alert('Nouveau talent enregistré');
+      });
+
       $uibModalInstance.dismiss('submit');
     };
 

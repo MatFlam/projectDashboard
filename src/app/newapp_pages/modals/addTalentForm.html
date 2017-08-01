@@ -13,30 +13,34 @@
 
         <div class="form-group">
           <div class="col-sm-10">
-            <label for="job" class="minotaur-label">Métier</label>
-            <select ng-model="modal.form.job" type="text" id="job"
-                    class="form-control" chosen="{width: '100%'}">
-              <option value="crea">Créa</option>
-              <option value="tech">Tech</option>
-              <option value="redac">Rédac</option>
-              <option value="projectManagement">Gestion de projet</option>
-              <option value="other">Autre</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-10">
-            <label for="level" class="minotaur-label">Niveau</label>
-            <select ng-model="modal.form.level" type="text" id="level"
-                    class="form-control" chosen="{width: '100%'}">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </div>
-        </div>
-        <br/><br/>
+            <div class="row">
+              <div class="col-xs-4">
+                <label for="job" class="minotaur-label">Métier</label>
+                <select ng-model="modal.form.job" type="text" id="job"
+                        class="form-control" chosen="{width: '100%'}">
+                  <option value="crea">Créa</option>
+                  <option value="tech">Tech</option>
+                  <option value="redac">Rédac</option>
+                  <option value="projectManagement">Gestion de projet</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
 
+
+              <div class="col-xs-4">
+                <label for="level" class="minotaur-label">Niveau</label>
+                <select ng-model="modal.form.level" type="text" id="level"
+                        class="form-control" chosen="{width: '100%'}">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br/><br/><br/><br/>
 
         <div class="form-group">
           <label for="email" class="minotaur-label">Email address</label>

@@ -43,9 +43,16 @@
     var vm = this;
 
     var users = this;
+
     users.lastSlotMeta = false;
 
-    users.model = {
+    users.projectManager = {
+      //locale: localeService.$locale.id,
+      options: {/*monoSchedule: true*/},
+      items: []
+    };
+
+    users.dirCli = {
       //locale: localeService.$locale.id,
       options: {/*monoSchedule: true*/},
       items: []
@@ -54,8 +61,8 @@
     var rootRef = firebase.database().ref();
     var ref = rootRef.child('users');
 
-    users.model.items = $firebaseArray(ref);
-    console.log('users', users.model.items);
+    users.projectManager.items = $firebaseArray(ref.orderByChild('job').equalTo('redac'));
+    users.dirCli.items = $firebaseArray(ref.orderByChild('job').equalTo('other'));
 
     if (row === undefined) {
 
@@ -88,19 +95,9 @@
       vm.form.fifthBillDate = "";
       vm.form.archived = 0;
 
-      // var manager = new Firebase("https://projets-plannings.firebaseio.com/user")
-      //   .startAt('crea')
-      //   .endAt('crea')
-      //   .once('value', function(snap) {
-      //     console.log('accounts matching email address', snap.val());
-      //   });
-
       vm.submitForm = function () {
         console.log('addform form is in scope', vm.form);
 
-// if (vm.form.deliveryDate !== "") {
-//  var deliveryDate = vm.form.deliveryDate.getTime();
-// }
         var toPush = {
           projectCode: vm.form.projectCode,
           client: (vm.form.client),
@@ -132,7 +129,13 @@
         };
 
         firebase.database().ref('projects/').push(toPush);
+
         $uibModalInstance.close(toPush);
+
+        ref.on('child_added', function() {
+          alert('Nouveau projet enregistré');
+        });
+
       };
     }
 
@@ -181,23 +184,22 @@ console.log("la date qui sort", JSON.parse(row.deliveryDate))
           redac: vm.form.redac,
           other: vm.form.other,
           projectManagement: vm.form.projectManagement,
-          deliveryDate: vm.form.deliveryDate.getTime(),
-          projectManager: vm.form.projectManager,
-          dirCli: vm.form.dirCli,
-          subContracting: vm.form.subContracting,
-          productionDate: vm.form.productionDate.getTime(),
-          totalAmount: vm.form.totalAmount,
-          comment: vm.form.comment,
-          firstBillRate: vm.form.firstBillRate,
-          firstBillDate: vm.form.firstBillDate.getTime(),
+          deliveryDate: vm.form.deliveryDate?vm.form.deliveryDate:vm.form.deliveryDate.getTime(),
+          projectManager: (vm.form.projectManager),
+          dirCli: (vm.form.dirCli),
+          subContracting: (vm.form.subContracting),
+          productionDate: vm.form.productionDate?vm.form.productionDate:vm.form.productionDate.getTime(),
+          totalAmount: (vm.form.totalAmount),
+          comment: (vm.form.comment),
+          firstBillRate: (vm.form.firstBillRate),
+          firstBillDate: vm.form.firstBillDate?vm.form.firstBillDate:vm.form.firstBillDate.getTime(),
           secondBillRate: vm.form.secondBillRate,
-          secondBillDate: vm.form.secondBillDate.getTime(),
+          secondBillDate: vm.form.secondBillDate?vm.form.secondBillDate:vm.form.secondBillDate.getTime(),
           thirdBillRate: vm.form.thirdBillRate,
-          thirdBillDate: vm.form.thirdBillDate.getTime(),
+          thirdBillDate: vm.form.thirdBillDate?vm.form.thirdBillDate:vm.form.thirdBillDate.getTime(),
           forthBillRate: vm.form.forthBillRate,
-          forthBillDate: vm.form.forthBillDate.getTime(),
-          fifthBillRate: vm.form.fifthBillRate,
-          fifthBillDate: vm.form.fifthBillDate.getTime()
+          forthBillDate: vm.form.forthBillDate?vm.form.forthBillDate:vm.form.forthBillDate.getTime(),
+          fifthBillRate: vm.form.fifthBillRate
         };
 
         firebase.database().ref('projects/' + row.$id).update(toPush);
