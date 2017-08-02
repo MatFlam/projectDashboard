@@ -73,7 +73,7 @@ function PlanningController($scope, $timeout, $log, $firebaseArray, $uibModal, l
                 model.items[idx].schedules.realised = [];
             }
         });
-        console.log("Model.items", model.items)
+        // console.log("Model.items", model.items)
         return unserializingDate(model);
     }
 
@@ -82,7 +82,7 @@ function PlanningController($scope, $timeout, $log, $firebaseArray, $uibModal, l
     var ref = rootRef.child('/users');
 
     planning.model.items = $firebaseArray(ref);
-    console.log("model", planning.model)
+    // console.log("model", planning.model)
 
     planning.model.items.$loaded().then(function () {
         planning.localModel = lodash.clone(planning.model);
@@ -119,11 +119,11 @@ function PlanningController($scope, $timeout, $log, $firebaseArray, $uibModal, l
     };
 
     planning.onChange = function (itemIndex, scheduleIndex, scheduleValue) {
-        console.log("itemIndex", itemIndex, "model.items", planning.localModel.items)
+        // console.log("itemIndex", itemIndex, "model.items", planning.localModel.items)
     };
 
     planning.onDelete = function (itemIndex, scheduleIndex, scheduleValue) {
-        console.log("itemIndex", itemIndex, "scheduleIndex", scheduleIndex, "ScheduleValue", scheduleValue)
+        // console.log("itemIndex", itemIndex, "scheduleIndex", scheduleIndex, "ScheduleValue", scheduleValue)
     };
 
     planning.shouldMergeTwoSlots = function (slot1, slot2) {
@@ -139,7 +139,7 @@ function PlanningController($scope, $timeout, $log, $firebaseArray, $uibModal, l
     };
 
     planning.saveLocalItems = function () {
-        console.log("click", planning.model.items);
+        // console.log("click", planning.model.items);
 
         planning.model = serializingDate(planning.localModel)
         lodash.each(planning.localModel.items, function (user, idx) {

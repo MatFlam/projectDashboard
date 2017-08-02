@@ -168,8 +168,6 @@
       vm.form.forthBillDate = row.forthBillDate?row.forthBillDate:'';
       vm.form.fifthBillRate = row.fifthBillRate?row.fifthBillRate:0;
       vm.form.fifthBillDate = row.fifthBillDate?row.fifthBillDate:'';
-console.log("la date qui sort", JSON.parse(row.deliveryDate))
-      console.log("row", row.deliveryDate);
 
       vm.submitForm = function () {
         console.log('addform form is in scope', vm.form);

@@ -6,14 +6,12 @@
     <form name="projectForm" class="form-validation" role="form" ng-submit="modal.submitForm()"
           novalidate validate-on-submit>
       <div class="form-group">
-        <!--<label for="projectCode" class="minotaur-label">Code Offre</label>-->
-        <input ng-model="modal.form.project" type="text" class="form-control rounded"
-               placeholder="Code Projet">
-      </div>
-      <div class="form-group">
-        <!--<label for="client" class="minotaur-label">Client</label>-->
-        <input ng-model="modal.form.client" type="text" class="form-control rounded" id="client"
-               placeholder="Client">
+        <select ng-model="modal.form.projectName" type="text"
+                class="form-control"
+                chosen="{width: '100%'}">
+          <option value=”” disabled selected>Nom du projet - Nom du client</option>
+          <option ng-repeat="project in modal.projectName.items" value="{{project.projectName}}">{{project.projectName + ' - ' + project.client}}</option>
+        </select>
       </div>
 
       <div class="form-group form-footer text-right">
@@ -26,3 +24,4 @@
 
   </section>
 </div>
+
