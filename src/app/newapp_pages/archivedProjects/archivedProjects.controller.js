@@ -3,44 +3,43 @@
 
   angular
     .module('minotaur')
-    // .controller('DashboardController', DashboardController)
-    .controller('TablesDatatablesController', TablesDatatablesController)
-    .controller('BasicDatatableController', BasicDatatableController);
-    // .controller('ChangeDatatableController', ChangeDatatableController);
+    .controller('ArchivedProjectsController', ArchivedProjectsController)
+    .controller('ArchivedTablesDatatablesController', ArchivedTablesDatatablesController)
+    .controller('ArchivedBasicDatatableController', ArchivedBasicDatatableController);
 
 
   /** @ngInject */
-  // function DashboardController(moment) {
-  //   var vm = this;
-  //
-  //   vm.datePicker = {
-  //     date: {
-  //       startDate: moment().subtract(1, "days"),
-  //       endDate: moment()
-  //     },
-  //     opts: {
-  //       ranges: {
-  //         'This Month': [moment().startOf('month'), moment()],
-  //         'Today': [moment(), moment()],
-  //         'Yesterday': [moment().subtract(1, 'day'), moment().subtract(1, 'day')],
-  //         'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-  //         'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-  //         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-  //       },
-  //       opens: 'left'
-  //     }
-  //   };
-  // }
+  function ArchivedProjectsController(moment) {
+    var vm = this;
+
+    vm.datePicker = {
+      date: {
+        startDate: moment().subtract(1, "days"),
+        endDate: moment()
+      },
+      opts: {
+        ranges: {
+          'This Month': [moment().startOf('month'), moment()],
+          'Today': [moment(), moment()],
+          'Yesterday': [moment().subtract(1, 'day'), moment().subtract(1, 'day')],
+          'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        opens: 'left'
+      }
+    };
+  }
 
 
   /** @ngInject */
-  function TablesDatatablesController() {
+  function ArchivedTablesDatatablesController() {
 
   }
 
 
 
-  function BasicDatatableController(DTOptionsBuilder, DTColumnBuilder, $firebaseArray, $scope, $q, $http,$compile,$timeout,$rootScope) {
+  function ArchivedBasicDatatableController(DTOptionsBuilder, DTColumnBuilder, $firebaseArray, $scope, $q, $http,$compile,$timeout,$rootScope) {
 
     var projects = this;
     projects.lastSlotMeta = false;
@@ -51,26 +50,33 @@
       items: []
     };
 
+    // var manager = new Firebase("https://projets-plannings.firebaseio.com/user")
+    //   .startAt('crea')
+    //   .endAt('crea')
+    //   .once('value', function(snap) {
+    //     console.log('accounts matching email address', snap.val());
+    //   });
+
     var rootRef = firebase.database().ref();
     var ref = rootRef.child('projects');
 
-    projects.model.items = $firebaseArray(ref.orderByChild('archived').equalTo(0));
+    projects.model.items = $firebaseArray(ref.orderByChild('archived').equalTo(1));
     var getData = projects.model.items.$loaded();
 
     var vm = this;
     vm.message = '';
 
-     vm.archive = function(row) {
-      firebase.database().ref('projects/' + row.$id).update({"archived" : 1});
-       getData = projects.model.items.$loaded();
-alert('Le projet a bien été archivé');
+    vm.unArchive = function(row) {
+      firebase.database().ref('projects/' + row.$id).update({"archived" : 0});
+      getData = projects.model.items.$loaded();
+      alert('c\'est archivé batard');
     };
 
     vm.deleteProject = function(row) {
       firebase.database().ref('projects/' + row.$id).remove();
       getData = projects.model.items.$loaded();
 
-      alert('Le projet a bien été supprimé');
+      alert('c\'est supprimé bel homme');
     };
 
     function rowCallback(nRow, aData) {
@@ -154,8 +160,8 @@ alert('Le projet a bien été archivé');
       DTColumnBuilder.newColumn('state').withTitle('Etat').withOption('defaultContent', ''),
       DTColumnBuilder.newColumn('actions').withClass('all').withTitle('Actions').renderWith(function () {
         return "<div ng-controller='SplashModalsController as splash'><button ng-click=\"splash.openSplash($event, 'lg', row)\" type='button' class='btn btn-info btn-border btn-xs'>Modifier</button></div>" +
-               "<div ng-controller='BasicDatatableController as arc'><button ng-click=\"arc.archive(row)\" type='button' class='btn btn-danger btn-border btn-xs'>Archiver</button></div>" +
-               "<div ng-controller='BasicDatatableController as arc'><button ng-click=\"arc.deleteProject(row)\" type='button' class='btn btn-danger btn-border btn-xs'>Supprimer</button></div>";
+          "<div ng-controller='ArchivedBasicDatatableController as arc'><button ng-click=\"arc.unArchive(row)\" type='button' class='btn btn-danger btn-border btn-xs'>Réactiver</button></div>" +
+          "<div ng-controller='BasicDatatableController as arc'><button ng-click=\"arc.deleteProject(row)\" type='button' class='btn btn-danger btn-border btn-xs'>Supprimer</button></div>";
       }),
       DTColumnBuilder.newColumn('aV2').withTitle('AV').withOption('defaultContent', ''),
       DTColumnBuilder.newColumn('crea2').withTitle('Créa').withOption('defaultContent', ''),
@@ -174,47 +180,6 @@ alert('Le projet a bien été archivé');
     vm.someClickHandler = someClickHandler;
 
   }
-
-  // function ChangeDatatableController($resource, DTOptionsBuilder, DTColumnDefBuilder) {
-  //
-  //   var vm = this;
-  //
-  //   function _buildPerson2Add(id) {
-  //     return {
-  //       id: id,
-  //       firstName: 'Foo' + id,
-  //       lastName: 'Bar' + id
-  //     };
-  //   }
-  //
-  //   function addPerson() {
-  //     vm.persons.push(angular.copy(vm.person2Add));
-  //     vm.person2Add = _buildPerson2Add(vm.person2Add.id + 1);
-  //   }
-  //
-  //   function modifyPerson(index) {
-  //     vm.persons.splice(index, 1, angular.copy(vm.person2Add));
-  //     vm.person2Add = _buildPerson2Add(vm.person2Add.id + 1);
-  //   }
-  //
-  //   function removePerson(index) {
-  //     vm.persons.splice(index, 1);
-  //   }
-  //
-  //   //vm.persons = $resource('http://www.filltext.com/?rows=16&id={index}&firstName={firstName}&lastName={lastName}&pretty=true').query();
-  //   vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withBootstrap();
-  //   //vm.dtColumnDefs = [
-  //   //    DTColumnDefBuilder.newColumnDef(0),
-  //   //    DTColumnDefBuilder.newColumnDef(1),
-  //   //    DTColumnDefBuilder.newColumnDef(2),
-  //   //    DTColumnDefBuilder.newColumnDef(3).notSortable()
-  //   //];
-  //   vm.person2Add = _buildPerson2Add(1);
-  //   vm.addPerson = addPerson;
-  //   vm.modifyPerson = modifyPerson;
-  //   vm.removePerson = removePerson;
-  //
-  // }
 
 
 })();
