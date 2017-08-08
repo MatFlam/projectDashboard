@@ -182,22 +182,23 @@
           redac: vm.form.redac,
           other: vm.form.other,
           projectManagement: vm.form.projectManagement,
-          deliveryDate: vm.form.deliveryDate?vm.form.deliveryDate:vm.form.deliveryDate.getTime(),
+          deliveryDate: vm.form.deliveryDate?vm.form.deliveryDate:'',
           projectManager: (vm.form.projectManager),
           dirCli: (vm.form.dirCli),
           subContracting: (vm.form.subContracting),
-          productionDate: vm.form.productionDate?vm.form.productionDate:vm.form.productionDate.getTime(),
+          productionDate: vm.form.productionDate?vm.form.productionDate:'',
           totalAmount: (vm.form.totalAmount),
           comment: (vm.form.comment),
           firstBillRate: (vm.form.firstBillRate),
-          firstBillDate: vm.form.firstBillDate?vm.form.firstBillDate:vm.form.firstBillDate.getTime(),
+          firstBillDate: vm.form.firstBillDate?vm.form.firstBillDate:'',
           secondBillRate: vm.form.secondBillRate,
-          secondBillDate: vm.form.secondBillDate?vm.form.secondBillDate:vm.form.secondBillDate.getTime(),
+          secondBillDate: vm.form.secondBillDate?vm.form.secondBillDate:'',
           thirdBillRate: vm.form.thirdBillRate,
-          thirdBillDate: vm.form.thirdBillDate?vm.form.thirdBillDate:vm.form.thirdBillDate.getTime(),
+          thirdBillDate: vm.form.thirdBillDate?vm.form.thirdBillDate:'',
           forthBillRate: vm.form.forthBillRate,
-          forthBillDate: vm.form.forthBillDate?vm.form.forthBillDate:vm.form.forthBillDate.getTime(),
+          forthBillDate: vm.form.forthBillDate?vm.form.forthBillDate:'',
           fifthBillRate: vm.form.fifthBillRate
+
         };
 
         firebase.database().ref('projects/' + row.$id).update(toPush);
